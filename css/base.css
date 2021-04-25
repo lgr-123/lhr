@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   /* 保证padding不会使盒子变大*/
+}
+
+body {
+    color: #2d2d2d;
+}
+
+em, i {
+    font-style: normal  /*字体格式正常*/
+}
+
+li {
+    list-style: none   /*把圆点去掉*/
+}
+
+img {
+    border: 0;
+    vertical-align: middle   /* 让图片后的文字居中对齐 */
+}
+
+button {
+    cursor: pointer     
+}
+
+a {
+    text-decoration: none;  /*删除下划线*/
+}
+
+a:hover {
+    color: #5048db;
+}
+
+button, input {
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    /* 默认边框需要手动去掉 */
+    border: 0;
+    outline: none;
+
+}
+
+.hide, .none {
+    display: none;  /*隐藏*/
+}
+
+/*清除浮动*/
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
