@@ -12,8 +12,8 @@ em, i {
     font-style: normal  /*字体格式正常*/
 }
 
-li {
-    list-style: none   /*把圆点去掉*/
+ul li {
+    list-style: none   
 }
 
 img {
@@ -27,10 +27,6 @@ button {
 
 a {
     text-decoration: none;  /*删除下划线*/
-}
-
-a:hover {
-    color: #5048db;
 }
 
 button, input {

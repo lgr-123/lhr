@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'icomoon';
     src: url('../fonts/icomoon.eot?upjzkn');
@@ -6,11 +5,6 @@
     font-weight: normal;
     font-style: normal;
     font-display: block;
-}
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 body {
@@ -22,8 +16,8 @@ body {
     margin: 0 auto;
     width: 980px;
 }
-/* 1、 头部制作部分开始 */
 
+/* 头部部分开始 */
 .head {
     width: 100%;
     height: 70px;
@@ -142,7 +136,7 @@ header>div a:nth-child(3):hover {
     text-decoration: underline;
 }
 
-/* 1、 头部制作部分结束 */
+/* 头部制作部分结束 */
 
 /* 2、nav 部分开始 */
 
@@ -175,673 +169,9 @@ nav .center ul li a:hover {
     background-color: #9B0909;
 }
 
-/* 2、nav 部分结束 */
+/* nav 部分结束 */
 
-/* 3、轮播图部分开始 */
-
-
-
-.box {
-    width: 100%;
-    /* max-width: 2020px; */
-    height: 285px;
-    background: url(../imgs/banner-bg5.jpg) no-repeat center center;
-    background-size: 6000px;
-
-}
-
-.box .w {
-    display: flex;
-    height: 285px;  
-    background-color: red;
-}
-.banner .focus {
-    position: relative;
-    /* overflow: hidden; */
-    width: 730px;
-    height: 284px;
-    transition: all .5s;
-}
-
-.banner .focus ul {
-    display: flex;
-    position: absolute;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-}
-.banner .focus ul li {
-    width: 730px;
-    height: 284px;
-}
-.banner .focus a img {
-    width: 730px;
-}
-
-.banner .focus>div:hover {
-    cursor: pointer;
-}
-
-.banner .focus .arrow-l, .banner .focus .arrow-r {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);  /* 居中对齐 */
-    z-index: 3;
-    width: 40px;
-    height: 60px;
-    color: #fff;
-    font-size: 52px;
-    line-height: 60px;
-    font-weight: lighter;
-    text-align: center;
-}
-
-.banner .focus .arrow-l {
-    left: -70px;
-}
-
-.banner .focus .arrow-r {
-    right: -304px;
-}
-
-.banner .focus .arrow-l::before {
-    font-family: 'icomoon';
-    content: '\e907';
-}
-
-.banner .focus .arrow-r::before {
-    font-family: 'icomoon';
-    content: '\e908';
-}
-
-.banner .focus .arrow-l:hover,
-.banner .focus .arrow-r:hover {
-    background-color: rgba(0,0,0,.3);
-}
-.banner .focus .circle {
-    position: absolute;
-    top: 88%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-}
-
-.banner .focus .circle li {
-    display: inline-block;
-    margin-right: 10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    /* background-color: #2d2d2d; */
-    background-color: skyblue;
-}
-
-.banner .focus .circle li:hover {
-    cursor: pointer;
-    background-color: red;
-
-}
-
-.banner .focus .circle .current {
-    /* background-color: #3930d8; */
-    background-color: red;
-}
-
-.box .download {
-    position: relative;
-    flex: 1;
-    width: 254px;
-    height: 285px;
-    z-index: 20;
-    background: url(../imgs/download.png) no-repeat 0 0;
-}
-
-.box .download a {
-    display: block;
-    z-index: 20;
-    margin: 186px 0 0 19px;
-    width: 215px;
-    height: 56px;
-    background: url(../imgs/download.png) no-repeat 0 9997px;
-}
-
-.box .download a:hover {
-    filter: brightness(110%);
-}
-
-.box .download p {
-    font-size: 12px;
-    color: #8d8d8d;
-    padding-left: 16px;
-    padding-top: 12px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 3、轮播图部分结束 */
-
-/* 4、主体内容部分开始 */
-
-.content {
-    display: flex;
-    margin: 0 auto;
-    width: 980px;
-    height: 1425px;
-    border: 1px solid #ccc;
-}
-
-.content .song {
-    margin-top: -1px;
-    width: 730px;
-    height: 100%;
-    background-color: pink;
-}
-
-.content .singer {
-    margin-top: -1px;
-    flex: 1;
-    font-size: 12px;
-    /* width: 250px;
-    height: 1000px; */
-    background-color: #fff;
-}
-
-.content .song .w {
-    margin: 0 auto;
-    overflow: hidden;
-    /* 防止外边距合并 */
-    width: 690px;
-    height: 100%;
-    background-color: #fff;
-}
-
-.content .song .hot .hot-nav,
-.content .song .new .new-nav,
-.content .song .record .record-nav {
-    display: flex;
-    margin-top: 22px;
-    width: 100%;
-    height: 35px;
-    line-height: 25px;
-    border-bottom: 2px solid #C10D0C;
-}
-
-.content .song .hot .hot-nav span,
-.content .song .new .new-nav span,
-.content .song .record .record-nav span{
-    font-size: 20px;
-    color: #333;
-}
-
-.content .song .hot .hot-nav i,
-.content .song .new .new-nav i,
-.content .song .record .record-nav i{
-    margin: 0 5px 0 2px;
-    width: 20px;
-    height: 20px;
-    background: url(../imgs/index.png) no-repeat -230px -158px;
-}
-
-.content .song .hot .hot-nav ul {
-    margin-left: 18px;
-}
-
-.content .song .hot .hot-nav ul li {
-    float: left;
-}
-
-.content .song .hot .hot-nav ul li a {
-    font-size: 12px;
-    padding: 0 12px;
-    border-right: 1px solid #ccc;
-    color: #666;
-}
-
-.content .song .hot .hot-nav ul li a:last-child {
-    border-right: none;
-}
-
-.content .song .hot .hot-nav em {
-    margin-left: 250px;
-}
-
-.content .song .new .new-nav em {
-    margin-left: 510px;
-}
-
-.content .song .hot .hot-nav em a,
-.content .song .new .new-nav em a,
-.content .song .record em a {
-    font-size: 12px;
-    color: #666;
-}
-
-.content .song .hot .hot-nav p,
-.content .song .new .new-nav p,
-.content .song .record .record-nav p{
-    margin-top: 3px;
-    width: 20px;
-    height: 20px;
-    background: url(../imgs/index.png) no-repeat 5px -235px;
-}
-
-.content .song .hot .hot-song ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-.content .song .hot .hot-song ul li {
-    margin-bottom: 10px;
-    width: 140px;
-    height: 214px;
-}
-
-.content .song .hot .hot-song ul li .front {
-    position: relative;
-    width: 100%;
-    height: 140px;
-}
-
-.content .song .hot .hot-song ul li .front a img {
-    width: 100%;
-    height: 140px;
-}
-
-.content .song .hot .hot-song ul li .front .float {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 27px;
-    line-height: 27px;
-    color: #ccc;
-    font-size: 12px;
-    background-color: rgba(0,0,0,.3);
-}
-
-.content .song .hot .hot-song ul li .front .float i {
-    float: left;
-    margin: 8px 3px 0 3px;
-    width: 14px;
-    height: 11px;
-    background:url(../imgs/iconall.png) no-repeat 0 -24px;
-
-}
-
-.content .song .hot .hot-song ul li .front .float a {
-    float: right;
-    margin: 8px 8px 0 0;
-    width: 16px;
-    height: 17px;
-    background: url(../imgs/iconall.png) no-repeat 0 0;
-}
-
-.content .song .hot .hot-song ul li .front .float a:hover {
-    filter: brightness(115%);
-}
-
-.content .song .hot .hot-song ul li>i {
-    float: left;
-    margin: 7px 7px 0 0;
-    width: 35px;
-    height: 15px;
-    background: url(../imgs/icon.png) no-repeat -31px -658px;
-}
-.content .song .hot .hot-song ul li .bottom {
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.content .song .hot .hot-song ul li .bottom a {
-    color: #000;
-}
-
-.content .song .hot .hot-song ul li .bottom a:hover {
-    text-decoration: underline;
-}
-
-
-/* 新碟上市轮播图部分 */
-
-/* .content .song .new {
-    width: 690px;
-    height: 245px;
-} */
-
-.content .song .new .new-banner {
-    position: relative;
-    margin-top: 20px;
-    width: 690px;
-    height: 186px;
-    border: 1px solid #d3d3d3;
-    background-color: #f5f5f5;
-}
-
- .content .song .new .new-banner .uls { 
-     position: relative;
-     overflow: hidden;
-    margin: 28px auto 0 23px;   
-    width: 645px;
-    height: 150px;
-}
-
-.content .song .new .new-banner ul {
-    position: absolute;
-   left: 0;
-    width: 300%;
-    height: 150px; 
-}
-
-
-/* 左右小箭头 */
-.content .song .new .new-banner .new-arrowl,
-.content .song .new .new-banner .new-arrowr {
-    position: absolute;
-    /* z-index: 10; */
-    top: 65px;
-    width: 15px;
-    height: 15px;
-    font-weight: 700;
-    color: #666;  
-    user-select: none;  /* 禁止文字被选中 */
-}
-
-.content .song .new .new-banner .new-arrowl {
-    left: 12px;
-}
-
-.content .song .new .new-banner .new-arrowr {
-    right: 3px;
-}
-
-.content .song .new .new-banner .new-arrowl:hover,
-.content .song .new .new-banner .new-arrowr:hover {
-    cursor: pointer;
-}
-
-.content .song .new .new-banner ul li {
-    float: left;
-    position: relative;
-    margin-left: 11px;
-    width: 118px;
-    height: 150px;
-}
-
-.content .song .new .new-banner ul li img {
-    width: 100px;
-    height: 100px;
-}
-
-.content .song .new .new-banner ul li>a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 118px;
-    height: 100px;
-    background: url(../imgs/coverall.png) no-repeat 0 -570px;
-}
-
-.content .song .new .new-banner ul li p a {
-    font-size: 12px;
-    color: #000;
-}
-
-.content .song .new .new-banner ul li p:last-child {
-    color: #666;
-    line-height: 15px;
-}
-
-.content .song .new .new-banner ul li p a:hover {
-    text-decoration: underline;
-}
-
-/* 隐藏的播放小图标  需要用js实现*/
-.content .song .new .new-banner ul li i {
-    position: absolute;
-    top: 75px;
-    right: 22px;
-}
-
-.content .song .new .new-banner ul li i a {
-    display: block;
-    width: 22px;
-    height: 22px;
-    background: url(../imgs/iconall.png) no-repeat 0 -85px;
-}
-
-/* 榜单部分 */
-.content .song .record {
-    margin-top: 45px;
-}
-
-.content .song .record .record-nav em {
-    margin-left: 555px;
-}
-
-.content .song .record .record-sort {
-    display: flex;
-    margin-top: 25px;
-    border: 1px solid #d3d3d3;
-}
-
-.content .song .record .record-sort>div {
-    width: 230px;
-    height: 472px;
-    background-color: blue;
-}
-
-.content .song .record .record-sort>div .record-head {
-    width: 100%;
-    height: 120px;
-    padding-top: 20px;
-    padding-left: 19px;
-    background-color: #fff;
-}
-
-.content .song .record .record-sort>div .record-head a {
-    float: left;
-    margin-right: 8px;
-    width: 80px;
-    height: 80px;
-}
-
-.content .song .record .record-sort>div .record-head a img{
-    width: 100%;
-    height: 100%;
-}
-
-.content .song .record .record-sort>div .record-head p {
-    margin-top: 5px;
-    color: #333;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.content .song .record .record-sort>div .record-head 
-
-.content .song .record .record-sort>div .record-song {
-    width: 100%;
-    height: 352px;
-    background-color: green;
-}
-
-
-
-
-
-/* 主体部分右侧歌手与主播部分 */
-.content .singer .load {
-    overflow: hidden;
-    width: 250px;
-    height: 126px;
-    background: url(../imgs/index.png) no-repeat 0 0;
-}
-
-.content .singer .load span {
-    display: block;
-    margin: 0 auto;
-    padding: 16px 0;
-    width: 205px;
-    height: 75px;
-    line-height: 22px;
-    color: #666;
-    font-size: 12px;
-}
-
-.content .singer .load a {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-    height: 31px;
-    font-size: 12px;
-    line-height: 31px;
-    text-align: center;
-    border-radius: 10px;
-    color: #fff;
-    background-color: #cd0e15;
-}
-
-.content .singer .load a:hover {
-    filter: brightness(110%);
-}
-
-.content .singer .sort-center {
-    margin: 0 auto;
-    width: 205px;
-}
-
-.content .singer .gesho .one {
-    margin-top: 15px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #ccc;
-}
-
-.content .singer .gesho .one span {
-    margin-right: 92px;
-    color: #333;
-    font-weight: 700;
-}
-
-.content .singer .gesho .one a {
-    color: #666;
-}
-
-.content .singer .gesho .one a:hover {
-    text-decoration: underline;
-}
-
-.content .singer .sort-center ul {
-    margin-top: 20px;
-}
-
-.content .singer .sort-center ul li { 
-    margin-top: 14px;
-    width: 100%;
-    height: 62px;
-    line-height: 28px;
-    /* 以下三行代码实现文本溢出是显示省略号的效果 */
-    overflow: hidden;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    border: 1px solid #e9e9e9;
-    background-color: #fafafa;
-}
-
-.content .singer .sort-center .gesho ul li:hover {
-    filter: brightness(98%);
-}
-
-.content .singer .sort-center  ul li a img {
-    float: left;
-    margin-right: 12px;
-    width: 62px;
-    height: 62px;
-}
-
-.content .singer .sort-center ul li a p {
-    margin-top: 5px;
-    overflow: hidden;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    font-weight: 700;
-    font-size: 14px;
-    color: #333;
-}
-
-.content .singer .sort-center  ul li a span {
-    color: #666;
-}
-
-.content .singer .gesho .three a {
-    display: block;
-    margin-top: 14px;
-    width: 100%;
-    height: 31px;
-    line-height: 31px;
-    text-align: center;
-    font-weight: 700;
-    color: #333;
-    border-radius: 8px;
-    border: 2px solid #cdcdcd;
-    background-color: #f3f3f3;
-}
-
-.content .singer .gesho .three a:hover {
-    filter: brightness(102%);
-}
-
-.content .singer .sort-center .zhubo .hot {
-    margin-top: 30px;
-    padding-bottom: 8px;
-    font-weight: 700;
-    border-bottom:1px solid #ccc;
-}
-
-.content .singer .sort-center .zhubo .hot-zhubo ul li {
-    height: 40px;
-    border: 0;
-    background-color: #fff;
-}
-
-.content .singer .sort-center .zhubo .hot-zhubo ul li a img {
-    width: 40px;
-    height: 40px;
-}
-
-.content .singer .sort-center .zhubo .hot-zhubo ul li a p {
-    margin-top: 2px;
-    line-height: 16px;
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.content .singer .sort-center .zhubo .hot-zhubo ul li a p:hover {
-    text-decoration: underline;
-}
-
-/* 4、主体内容部分结束 */
-
-
-
-/* 5、底部部分开始 */
+/* 底部部分开始 */
 footer {
     width: 100%;
     height: 173px;
@@ -933,4 +263,105 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     background-size: 180px 139px;
 }
 
-/* 5、底部部分结束 */
+/* 底部部分结束 */
+
+/* 隐藏的播放设置部分开始 */
+
+.play-hid {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    color: #9b9b9b;
+    transition: all .5s;
+    background-color: #303030;
+}
+
+.play-hid>div {
+    height: 100%;
+    background-color: silver;
+}
+
+.play-hid>div>div {
+    float: left;
+}
+
+.play-hid>div .play-left {
+    width: 137px;
+    height: 100%;
+    line-height: 50px;
+    background-color: green;
+}
+
+.play-hid>div .play-left a {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+
+.play-hid>div .play-left a:nth-child(odd) {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-color: red;
+}
+
+.play-hid>div .play-left a:nth-child(even) {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+}
+
+.play-hid>div .play-left a:nth-child(1) {
+    background: url(../imgs/playbar.png) no-repeat 0 -130px;;
+}
+
+.play-hid>div .play-left a:nth-child(2) {
+    background: url(../imgs/playbar.png) no-repeat 0 -204px;
+}
+
+.play-hid>div .play-left a:nth-child(3) {
+    background: url(../imgs/playbar.png) no-repeat -80px -130px;
+}
+
+.play-hid>div .play-middle {
+    padding-top: 8px;
+    height: 100%;
+
+}
+
+.play-hid>div .play-middle a {
+    vertical-align: top;
+    font-size: 12px;
+    color: #9b9b9b;
+}
+
+.play-hid>div .play-middle a:hover {
+    text-decoration: underline;
+}
+
+.play-hid>div .play-middle a:first-child img {
+    float: left;
+    margin-right: 12px;
+    width: 34px;
+    height: 35px;
+    border-radius: 4px;
+    vertical-align: top;
+}
+
+.play-hid>div .play-middle a:nth-child(2) {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.play-hid>div .play-middle a:nth-child(5) {
+    display: inline-block;
+    margin-left: 12px;
+    width: 14px;
+    height: 15px;
+    background: url(../imgs/playbar.png) no-repeat -110px -103px;;
+}
+
+/* 493 9 */
+/* 隐藏的播放设置部分结束 */
