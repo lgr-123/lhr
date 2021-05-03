@@ -127,8 +127,8 @@
     const new_focusWidth = new_uls.offsetWidth;
     let new_num = 0;;
     let flag = true;
-    console.log(new_uls.offsetWidth);
-    console.log(new_ul.offsetWidth);
+    // console.log(new_uls.offsetWidth);
+    // console.log(new_ul.offsetWidth);
     new_arrowr.addEventListener('click', function() {
       if (flag) {
             flag = false;

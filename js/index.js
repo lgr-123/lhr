@@ -1,11 +1,164 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
 
-    var audio = document.querySelector('#playy');
+    //  song_play  点击该按钮可实现播放歌曲
+    let song_play = document.querySelectorAll('#songPlay');
+    // audio 获取音频元素
+    let audio = document.querySelector('audio');
+    // hid_play 获取最下面播放按钮， 可控制播放或暂停
+    const hid_play = document.querySelector('#hid-play');
+    // hid_flag  控制按钮暂停或播放
+    let hid_flag = true;
+    // hid_songName 将获取的歌名记录下来
+    let hid_songName = document.querySelector('.hid-songname');
+    // songName 获取歌曲的名字
+    let songName = document.querySelectorAll('.songname')
+    // processTime  进度条 
+    let processTime = document.querySelector('.processtime');
+    // barTime  获取进度条的元素
+    let barTime = document.querySelector('.bar');
+    //  processCircle 进度条上的小圆点
+    let processCircle = document.querySelector('.processcircle');
+    //  barTimeWidth 获取进度条总的长度
+    const barTimeWidth = barTime.offsetWidth;
+    //  play_timer  定时器
+    let play_timer = null;
+    // songNowTime  将歌曲目前的播放时间放在该元素上
+    let songNowTime = document.querySelector('.now-time');
+    // songSumTime  将歌曲总的播放时间放在该元素上
+    let songSumTime = document.querySelector('.sum-time');
 
-window.addEventListener('click', function() {
-    audio.play();
-})
-    
+
+
+    // processCircle.addEventListener('click', function() {
+    //     alert(111);
+    // })
+
+
+
+    // 实现点击播放歌曲
+    for (let i = 0; i < song_play.length; i++) {
+
+        song_play[i].addEventListener('click', function () {
+            if(songName[i]) {
+                let str = songName[i].innerHTML;
+            hid_songName.innerHTML = str;
+            }
+            let song_id = getSongId(this);
+            audio.src = 'https://music.163.com/song/media/outer/url?id=' + song_id + '';
+            audio.play();
+            hid_flag = true;
+            hid_play.click();
+        })
+    }
+
+    // 点击播放按钮实现播放与暂停
+    hid_play.addEventListener('click', function () {
+        if (hid_flag) {   // 播放歌曲
+            this.style.background = 'url(imgs/playbar.png) no-repeat 0 -165px';
+            audio.play();
+            play_timer = setInterval(progressTime, 1000);
+            hid_flag = false;
+        } else {   // 暂停歌曲
+            this.style.background = 'url(imgs/playbar.png) no-repeat 0 -204px';
+            audio.pause();
+            clearInterval(play_timer);   // 关闭定时器
+            play_timer = null;
+            hid_flag = true;
+        }
+    })
+
+    // 拖动进度条改变歌曲播放时间
+    processCircle.addEventListener('mousedown', function () {
+        document.addEventListener('mousemove', move)
+        function move(e) {
+            processCircle.style.left = e.clientX - barTime.offsetLeft + 'px';
+            processTime.style.width = e.clientX - barTime.offsetLeft  + 'px';
+            audio.pause();  // 进度条拖动时先暂停歌曲
+            progressTimeByMouse();
+        }
+        document.addEventListener('mouseup', function () {
+            document.removeEventListener('mousemove', move);
+            document.removeEventListener('mousedown', move);
+            audio.play();  // 进度条拖动结束时再播放歌曲
+        })
+        hid_flag = true;
+        hid_play.click()
+    })
+
+    barTime.addEventListener('click', function(e) {
+        // processCircle.mousedown();
+        // audio.play();  // 不加此行代码会报错
+        processCircle.style.left = e.clientX - barTime.offsetLeft + 'px';
+        processTime.style.width = e.clientX - barTime.offsetLeft  + 'px';
+        progressTimeByMouse();
+        hid_flag = true;
+        hid_play.click()
+    })
+
+
+
+
+
+
+    // 手动获取歌曲Id 并进行兼容性处理
+    function getSongId(obj) {
+        if (obj.dataset.songid) {  // 此方法自定义属性必须 写成小写的形式  html中不用
+            return obj.dataset.songid
+        } else {
+            return obj.getAttribute("data-songId");
+        }
+    }
+
+    // 根据歌曲播放时间获取进度条的位置
+    function progressTime() {
+        let song_currentTime = audio.currentTime;
+        let song_totalTime = audio.duration;
+
+        let processTimeWidth = Math.round(song_currentTime * barTimeWidth / song_totalTime);
+        processTime.style.width = processTimeWidth + 'px';
+        processCircle.style.left = processTimeWidth - 5 + 'px';
+        //     console.log(song_currentTime);
+        // console.log(song_totalTime);
+        songNowTime.innerHTML = audio.currentTime;
+    }
+
+    // 根据进度条位置设置播放时间
+    function progressTimeByMouse() {
+        let processTimeWidth = processTime.offsetWidth;
+        let song_totalTime = audio.duration;
+        audio.currentTime = processTimeWidth * song_totalTime / barTimeWidth;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
 
 

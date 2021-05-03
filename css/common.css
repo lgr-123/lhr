@@ -279,7 +279,7 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
 
 .play-hid>div {
     height: 100%;
-    background-color: silver;
+    background-color: pink;
 }
 
 .play-hid>div>div {
@@ -303,7 +303,6 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     display: inline-block;
     width: 28px;
     height: 28px;
-    background-color: red;
 }
 
 .play-hid>div .play-left a:nth-child(even) {
@@ -363,5 +362,65 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     background: url(../imgs/playbar.png) no-repeat -110px -103px;;
 }
 
-/* 493 9 */
+.play-hid>div .play-middle .bar {
+    position: relative;
+    margin-left: 46px;
+    width: 493px;
+    height: 9px;
+    border-radius: 8px;
+    background-color: #535353;
+}
+
+.play-hid>div .play-middle .bar:hover {
+    cursor: pointer;
+}
+
+.play-hid>div .play-middle .bar .processtime {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 9px;
+    border-radius: 8px;
+    background-color: #c70c0c;
+}
+
+.play-hid>div .play-middle .bar .processcircle {
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);  /* 小圆点局进度条对齐 */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 6px solid #f6f6f6;
+    background-color: #c70c0c;
+
+}
+
+.play-hid>div .play-middle .bar .processcircle:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 30px 2px #fff;
+}
+
+.play-hid>div .play-middle .bar i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+}
+
+.play-hid>div .play-middle .bar .now-time {
+    right: -43px;
+    color: #a1a1a1;
+}
+
+.play-hid>div .play-middle .bar .sum-time {
+    right: -85px;
+    color: #797979;
+}
+
+.play-hid>div .play-middle .bar i:nth-child(4) {
+    right: -50px;
+    color: #797979;
+}
 /* 隐藏的播放设置部分结束 */
