@@ -137,8 +137,107 @@ header>div a:nth-child(3):hover {
 }
 
 /* 头部制作部分结束 */
+/* 登录框制作开始 */
 
-/* 2、nav 部分开始 */
+.load-main {
+    position: absolute;
+    overflow: hidden;
+    top: 150px;
+    left: 150px;
+    z-index: 999;
+    width: 530px;
+    height: 372px;
+    color: #666;
+    font-size: 12px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.load-main .load-head {
+    width: 530px;
+    height: 38px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 38px;
+    padding-left: 20px;
+
+    background-color: #2d2d2d;;
+}
+
+/* 二维码登录 */
+.load-main .erweima {
+    margin-top: 38px;
+    width: 530px;
+    height: 220px;
+}
+
+.load-main .erweima .phone {
+    float: left;
+    margin-left: 100px;
+    width: 125px;
+    height: 220px;
+    background: url(../imgs/qr_guide.png) no-repeat;
+    background-size: contain;
+}
+
+.load-main .erweima .load-erweima {
+    float: left;
+    margin-left: 30px;
+    width: 200px;
+    height: 220px;
+    text-align: center;
+}
+
+.load-main .erweima .load-erweima p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.load-main .erweima .load-erweima .picture-erweima {
+    margin: 15px 0 5px 35px;
+    width: 130px;
+    height: 130px;
+    background-color: pink;
+}
+
+.load-main .erweima .load-erweima span {
+    font-size: 12px;
+    color: #00000066;
+}
+
+.load-main .erweima .load-erweima span a {
+    color: #0c7372;
+}
+
+.load-main .erweima .load-erweima span a:hover {
+    text-decoration: underline;
+}
+
+.load-main .load-other {
+    margin: 10px auto;
+    width: 120px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.load-main .load-other a {
+    color: #000000cc;
+}
+
+
+
+
+
+
+
+
+
+/* nav 部分开始 */
 
 nav {
     width: 100%;

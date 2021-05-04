@@ -1,0 +1,183 @@
+/* 手机号登录 */
+
+.phone-content {
+    position: absolute;
+    top: 0;
+    left: 30%;
+}
+
+.load-main,
+.send-checknum {
+    overflow: hidden;
+    width: 530px;
+    height: 345px;
+    color: #666;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px -1px;
+    background-color: #fff;
+}
+
+.load-main .load-head,
+.send-checknum .check-head {
+    width: 530px;
+    height: 38px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 38px;
+    padding-left: 20px;
+
+    background-color: #2d2d2d;;
+}
+
+.load-main .phonenum-load {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 220px;
+    height: 224px;
+}
+
+.load-main .phonenum-load .number {
+    display: flex;
+    margin-top: 32px;
+    width: 220px;
+    height: 32px;
+    border: 1px solid #ccc;
+    background-color: pink;
+}
+
+.load-main .phonenum-load .number .countrycode {
+    width: 44px;
+    height: 32px;
+}
+
+.load-main .phonenum-load .number .phone-number {
+    flex: 1;
+    background-color: green;
+}
+
+.load-main .phonenum-load .number .phone-number input {
+    width: 100%;
+    height: 100%;
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+.load-main .phonenum-load .phone-password {
+    margin-top: 15px;
+    margin-bottom: 12px;
+    width: 220px;
+    height: 32px;
+    border: 1px solid #ccc;
+}
+
+.load-main .phonenum-load .phone-password input {
+    width: 100%;
+    height: 100%;
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+.load-main .phonenum-load .other input {
+    vertical-align: middle;
+}
+
+.load-main .phonenum-load .other span {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.load-main .phonenum-load .other a {
+    float: right;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #666;
+}
+
+.load-main .phonenum-load .other a:hover {
+    text-decoration: underline;
+}
+
+.load-main .phonenum-load .phone-submit {
+    margin-top: 24px;
+    width: 100%;
+    height: 31px;
+    line-height: 31px;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #2979c7;
+}
+
+.load-main .phonenum-load .phone-submit a {
+    color: #fff;
+    font-weight: 600;
+}
+
+.load-main .phonenum-load .phone-submit:hover {
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+.load-main .load-othertype {
+    margin-top: 30px;
+    width: 530px;
+    height: 50px;
+    line-height: 50px;
+ 
+    border-top: 1px solid #ccc;
+    background-color: #f7f7f7;;
+}
+
+.load-main .load-othertype a:first-child {
+    margin-left: 30px;
+    color: #0c72c3;
+}
+
+.load-main .load-othertype a:nth-child(2) {
+    float: right;
+    margin-right: 30px;
+    color: #999;
+}
+
+.phone-content .send-checknum {
+    width: 530px;
+    height: 330px;
+}
+
+.phone-content .send-checknum .check-tip {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 220px;
+    height: 290px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.phone-content .send-checknum .check-tip .check-icon {
+    margin: 32px auto 18px auto;
+    width: 94px;
+    height: 90px;
+    background: url(../imgs/pic_default.png) no-repeat;
+    background-size: contain;
+}
+
+.phone-content .send-checknum .check-tip .check-text {
+    margin: 20px auto 0 auto;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 6px;
+    background-color: #2979c7;;
+}
+
+.phone-content .send-checknum .check-tip .check-text:hover {
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+
+
+
+/* 登录框制作结束 */

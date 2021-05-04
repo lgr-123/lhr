@@ -18,7 +18,7 @@
     /* max-width: 2020px; */
     height: 285px;
     background: url(../imgs/banner-bg5.jpg) no-repeat center center;
-    background-size: 6000px;
+    background-size: 285px 100%;
 
 }
 
@@ -49,6 +49,7 @@
 }
 .banner .focus a img {
     width: 730px;
+    height: 284px;
 }
 
 .banner .focus>div:hover {

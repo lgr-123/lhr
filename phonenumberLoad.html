@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/phonenumberLoad.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <!-- 手机号登录 -->
+    <div class="phone-content">
+        <!--1、 输入手机号码与密码，并验证是否正确 -->
+        <div class="load-main">
+            <div class="load-head">登录</div>
+            <div class="phonenum-load">
+                <div class="number">
+                    <div class="countrycode"></div>
+                    <div class="phone-number">
+                        <input type="text" placeholder="请输入手机号" id="user-phone">
+                    </div>
+                </div>
+                <div class="phone-password">
+                    <input type="password" placeholder="请输入密码" id="user-password">
+                </div>
+                <div class="other">
+                    <input type="checkbox">
+                    <span>自动登录</span>
+                    <a href="#">忘记密码?</a>
+                </div>
+                <div class="phone-submit"><a href="javascript:;">登录</a></div>
+            </div>
+            <div class="load-othertype">
+                <a href="#">&lt;其他登录方式</a>
+                <a href="#">没有账号？免费注册&gt;</a>
+            </div>
+        </div>
+        <!-- 2、手机号码密码都正确后，提示发送验证码 -->
+        <div class="send-checknum">
+            <div class="check-head">网易云音乐</div>
+            <div class="check-tip">
+                <div class="check-icon"></div>
+                <p>由于你在非受信任的设备上登录，需要进行短信验证
+                    <span>111</span>
+                </p>
+                <div class="check-text">通过短信验证身份</div>
+            </div>
+        </div>
+        <!-- 3、输入验证码并验证 -->
+    </div>
+</body>
+
+</html>

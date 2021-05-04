@@ -131,6 +131,37 @@ window.addEventListener('load', function () {
 
 
 
+// 手机号登录
+    let user_phone = document.querySelector('#user-phone');
+    let user_password = document.querySelector('#user-password');
+    let user_submit = document.querySelector('.phone-submit');
+
+
+    // user_submit.addEventListener('click', function() {
+    //     console.log(user_password.value);
+    // })
+
+    user_submit.addEventListener('click', function() {
+        originAjax({
+            type: 'get',
+            url: 'https://autumnfish.cn/login/cellphone?phone='+ user_phone.value +'&password='+ user_password.value +'',
+            success: function() {
+               
+            },
+            error: function(obj) {
+                if(obj.code != 200) {
+                    alert('密码错误')
+                }
+            }
+        });
+
+
+
+        
+    })
+    
+
+
 
 
 
