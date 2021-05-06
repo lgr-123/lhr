@@ -1,13 +1,14 @@
 /* 手机号登录 */
 
 .phone-content {
-    position: absolute;
-    top: 0;
-    left: 30%;
+    position: relative;
 }
 
 .load-main,
-.send-checknum {
+.send-checknum,
+.send-finish {
+    position: absolute;
+    top: 0;
     overflow: hidden;
     width: 530px;
     height: 345px;
@@ -18,8 +19,17 @@
     background-color: #fff;
 }
 
+.send-checknum {
+    display: none;
+}
+
+.send-finish  {
+    display: none;
+}
+
 .load-main .load-head,
-.send-checknum .check-head {
+.send-checknum .check-head,
+.send-finish .send-head {
     width: 530px;
     height: 38px;
     color: #fff;
@@ -29,6 +39,18 @@
     padding-left: 20px;
 
     background-color: #2d2d2d;;
+}
+
+.load-close {
+    float: right;
+    margin-right: 8px;
+    color: #ccc;
+    font-size: 25px;
+    transform: rotate(45deg);
+}
+
+.load-close:hover {
+    cursor: pointer;
 }
 
 .load-main .phonenum-load {
@@ -54,7 +76,6 @@
 
 .load-main .phonenum-load .number .phone-number {
     flex: 1;
-    background-color: green;
 }
 
 .load-main .phonenum-load .number .phone-number input {
@@ -77,6 +98,27 @@
     height: 100%;
     padding: 5px 12px;
     font-size: 12px;
+}
+
+.load-main .phonenum-load .load-error {
+    display: none;
+    margin-top: -6px;
+    margin-bottom: 6px;
+}
+
+.load-main .phonenum-load .load-error .load-errortip {
+    padding-top: 2px;
+    color: red;
+    font-size: 12px;
+
+}
+
+.load-main .phonenum-load .load-error i{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    background:url(../imgs/icon.png) no-repeat -50px -270px;;
 }
 
 .load-main .phonenum-load .other input {
@@ -114,7 +156,9 @@
     font-weight: 600;
 }
 
-.load-main .phonenum-load .phone-submit:hover {
+.load-main .phonenum-load .phone-submit:hover,
+.phone-content .send-finish .send-tip .phone-finish:hover,
+.phone-content .send-checknum .check-tip .check-text:hover {
     filter: brightness(110%);
     cursor: pointer;
 }
@@ -169,13 +213,63 @@
     line-height: 30px;
     color: #fff;
     border-radius: 6px;
-    background-color: #2979c7;;
+    background-color: #2979c7;
 }
 
-.phone-content .send-checknum .check-tip .check-text:hover {
-    filter: brightness(110%);
-    cursor: pointer;
+.phone-content .send-finish {
+    width: 530px;
+    height: 270px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px -1px;
+    background-color: #fff;
+} 
+
+.phone-content .send-finish .send-tip {
+    margin: 0 auto;
+    padding-top: 25px;
+    width: 220px;
+    height: 228px;
+    font-size: 12px;
+    color: #666;
 }
+
+.phone-content .send-finish .send-tip p {
+    margin-bottom: 6px;
+}
+
+.phone-content .send-finish .send-tip .checknumber {
+    margin-top: 24px;
+}
+
+.phone-content .send-finish .send-tip .checknumber input {
+    float: left;
+    margin-right: 5px;
+    padding-left: 10px;
+    width: 50px;
+    height: 30px;
+    border-bottom: 2px solid #ccc;
+}
+
+.phone-content .send-finish .send-tip>a {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    color: #0c72c3;
+}
+
+.phone-content .send-finish .send-tip .phone-finish { 
+    width: 100%;
+    height: 30px;
+    /* 清除浮动 */
+    clear: both;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #2979c7;
+}
+
+
 
 
 

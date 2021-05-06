@@ -39,9 +39,9 @@ window.addEventListener('load', function () {
     for (let i = 0; i < song_play.length; i++) {
 
         song_play[i].addEventListener('click', function () {
-            if(songName[i]) {
+            if (songName[i]) {
                 let str = songName[i].innerHTML;
-            hid_songName.innerHTML = str;
+                hid_songName.innerHTML = str;
             }
             let song_id = getSongId(this);
             audio.src = 'https://music.163.com/song/media/outer/url?id=' + song_id + '';
@@ -72,7 +72,7 @@ window.addEventListener('load', function () {
         document.addEventListener('mousemove', move)
         function move(e) {
             processCircle.style.left = e.clientX - barTime.offsetLeft + 'px';
-            processTime.style.width = e.clientX - barTime.offsetLeft  + 'px';
+            processTime.style.width = e.clientX - barTime.offsetLeft + 'px';
             audio.pause();  // 进度条拖动时先暂停歌曲
             progressTimeByMouse();
         }
@@ -85,11 +85,11 @@ window.addEventListener('load', function () {
         hid_play.click()
     })
 
-    barTime.addEventListener('click', function(e) {
+    barTime.addEventListener('click', function (e) {
         // processCircle.mousedown();
         // audio.play();  // 不加此行代码会报错
         processCircle.style.left = e.clientX - barTime.offsetLeft + 'px';
-        processTime.style.width = e.clientX - barTime.offsetLeft  + 'px';
+        processTime.style.width = e.clientX - barTime.offsetLeft + 'px';
         progressTimeByMouse();
         hid_flag = true;
         hid_play.click()
@@ -131,37 +131,138 @@ window.addEventListener('load', function () {
 
 
 
-// 手机号登录
-    let user_phone = document.querySelector('#user-phone');
-    let user_password = document.querySelector('#user-password');
-    let user_submit = document.querySelector('.phone-submit');
+    // 手机号登录
+    // let user_phone = document.querySelector('#user-phone');
+    // let user_password = document.querySelector('#user-password');
+    // let user_submit = document.querySelector('.phone-submit');
 
 
     // user_submit.addEventListener('click', function() {
     //     console.log(user_password.value);
     // })
 
-    user_submit.addEventListener('click', function() {
-        originAjax({
-            type: 'get',
-            url: 'https://autumnfish.cn/login/cellphone?phone='+ user_phone.value +'&password='+ user_password.value +'',
-            success: function() {
-               
-            },
-            error: function(obj) {
-                if(obj.code != 200) {
-                    alert('密码错误')
-                }
+    // user_submit.addEventListener('click', function() {
+    //     originAjax({
+    //         type: 'get',
+    //         url: 'https://autumnfish.cn/login/cellphone?phone='+ user_phone.value +'&password='+ user_password.value +'',
+    //         success: function() {
+
+    //         },
+    //         error: function(obj) {
+    //             if(obj.code != 200) {
+    //                 alert('密码错误')
+    //             }
+    //         }
+    //     });
+
+
+
+
+    // })
+
+
+    // 手机登录框部分
+    let loadByPhone = document.querySelector("#loadByPhone");
+    let user_close = document.querySelectorAll('.load-close');
+
+    console.log(user_close);
+    for (let i = 0; i < user_close.length; i++) {
+        user_close[i].addEventListener('click', function () {
+            this.parentNode.parentNode.style.display = 'none';
+        })
+    }
+    // console.log(loadByPhone.contentWindow);
+    // var iwindow = loadByPhone.contentWindow;
+    // console.log('window', loadByPhone.contentWindow);
+    // loadByPhone.style.width = 530 + 'px';
+    // loadByPhone.style.height = 345 + 'px';
+
+    // loadByPhone.style.width = window.innerWidth + 'px';
+    // loadByPhone.style.height = window.innerHeight + 'px';
+
+
+
+
+    // 热门推荐歌单部分调用接口实现
+
+    const hotPlaylists = document.querySelector('.hot-song-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/personalized',
+        data: {
+            limit: 8,
+        },
+        success: function (obj) {
+            let playlists = obj.result;
+            console.log(playlists);
+            for (let i = 0; i < 8; i++) {
+                hotPlaylists.children[i].setAttribute('playlistId', playlists[i].id)
+                hotPlaylists.children[i].querySelector('img').src = playlists[i].picUrl;
+                hotPlaylists.children[i].querySelector('p').querySelector('a').innerHTML = playlists[i].name;
             }
-        });
+        }
 
-
-
-        
     })
+
+    // 飙升榜歌单获取
+    const hotSongPlaylist = document.querySelector('.hotsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 19723756
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            console.log(playlist);
+            for (let i = 0; i < 10; i++) {
+                hotSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
+                hotSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
+            }
+        }
+
+    })
+
+    // 新歌榜榜歌单获取
+    const newSongPlaylist = document.querySelector('.newsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 3779629
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            for (let i = 0; i < 10; i++) {
+                newSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
+                newSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
+            }
+        }
+
+    })
+
+
+      // 原创榜榜歌单获取
+    const originSongPlaylist = document.querySelector('.originsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 2884035
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            for (let i = 0; i < 10; i++) {
+                originSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
+                originSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
+            }
+        }
+
+    })
+
+
+
     
-
-
 
 
 

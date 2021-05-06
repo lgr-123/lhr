@@ -8,6 +8,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/phonenumberLoad.css">
     <link rel="stylesheet" href="css/base.css">
+    <script src="js/AJAX.js"></script>
+    <script src="js/phonenumberLoad.js"></script>
 </head>
 
 <body>
@@ -15,7 +17,9 @@
     <div class="phone-content">
         <!--1、 输入手机号码与密码，并验证是否正确 -->
         <div class="load-main">
-            <div class="load-head">登录</div>
+            <div class="load-head">登录
+                <span class="load-close">+</span>
+            </div>
             <div class="phonenum-load">
                 <div class="number">
                     <div class="countrycode"></div>
@@ -25,6 +29,11 @@
                 </div>
                 <div class="phone-password">
                     <input type="password" placeholder="请输入密码" id="user-password">
+                </div>
+                <!-- 密码或账号输入错误时提示 -->
+                <div class="load-error">
+                    <i></i>
+                    <span class="load-errortip">请输入正确的密码</span>
                 </div>
                 <div class="other">
                     <input type="checkbox">
@@ -40,7 +49,9 @@
         </div>
         <!-- 2、手机号码密码都正确后，提示发送验证码 -->
         <div class="send-checknum">
-            <div class="check-head">网易云音乐</div>
+            <div class="check-head">网易云音乐
+                <span class="load-close">+</span>
+            </div>
             <div class="check-tip">
                 <div class="check-icon"></div>
                 <p>由于你在非受信任的设备上登录，需要进行短信验证
@@ -50,7 +61,21 @@
             </div>
         </div>
         <!-- 3、输入验证码并验证 -->
-        <div ></div>
+        <div class="send-finish">
+            <div class="send-head">网易云音乐
+                <span class="load-close">+</span>
+            </div>
+           <div class="send-tip">
+            <p>你的手机号: <span></span></p>
+            <p>为了安全，我们会给你发送短信验证码</p>
+            <div class="checknumber">
+                <input type="text"><input type="text"><input type="text"><input type="text">
+            </div>
+            <a href="#">重新发送</a>
+            <div class="phone-finish">完成</div>
+           </div>
+           
+        </div>
     </div>
 </body>
 

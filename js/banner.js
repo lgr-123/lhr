@@ -6,7 +6,10 @@ window.addEventListener('load', function () {
     
     originAjax({
         type: 'get',
-        url: 'https://autumnfish.cn/banner?type=0',
+        url: 'https://autumnfish.cn/banner',
+        data: {
+            type: 0
+        },
         success: function(obj) {
             let banners = obj.banners;
             const arrow_l = document.querySelector('.arrow-l');
@@ -24,21 +27,22 @@ window.addEventListener('load', function () {
         // console.log(banners);
         banner_picture.src = banners[0].imageUrl;
         banner_bg.style.background = 'url('+ banners[0].imageUrl +') no-repeat center center';
-        // banner_bg.style.backgroundSize = '6000px';
+        banner_bg.style.backgroundSize = '100%';
            
         for (let i = 0; i < banners.length; i++) {
                 let li = document.createElement('li');
                 li.setAttribute('index', i + 1);  // 记录小圆圈的索引号
                 ol.appendChild(li);
                 ol.children[i].addEventListener('click', function () {
-                    for (let j = 0; j < sum; j++) {
+                    for (let j = 0; j < banners.length; j++) {
                         ol.children[j].className = '';
                     }
                     this.className = 'current';
                     num = this.getAttribute('index');
                     banner_picture.src = banners[i].imageUrl
                     banner_bg.style.background = 'url('+ banners[i].imageUrl +') no-repeat center center';
-                    // banner_bg.style.backgroundSize = '6000px';
+        banner_bg.style.backgroundSize = '100%';
+        // banner_bg.style.backgroundSize = '6000px';
                 })
             }
            
@@ -52,7 +56,7 @@ window.addEventListener('load', function () {
                 banner_picture.src = banners[num].imageUrl;
                 banner_bg.style.background = 'url('+ banners[num].imageUrl +') no-repeat center center';
                 banner_bg.style.backgroundSize = '6000px';
-                for (let j = 0; j < sum; j++) {
+                for (let j = 0; j < banners.length; j++) {
                     ol.children[j].className = '';
                 }
                 ol.children[num].className = 'current';
@@ -65,9 +69,10 @@ window.addEventListener('load', function () {
                     num = 0;
                 }
                 banner_picture.src = banners[num].imageUrl;
-                banner_bg.style.background = 'url('+ banners[num].imageUrl +') no-repeat center center';
-                // banner_bg.style.backgroundSize = '6000px';
-                for (let j = 0; j < sum; j++) {
+                banner_bg.style.background = 'url('+ banners[num].imageUrl +') no-repeat';
+        banner_bg.style.backgroundSize = '100%';
+        // banner_bg.style.backgroundSize = '6000px';
+                for (let j = 0; j < banners.length; j++) {
                     ol.children[j].className = '';
                 }
                 ol.children[num].className = 'current';
@@ -92,9 +97,6 @@ window.addEventListener('load', function () {
             })
         
             // 轮播图部分结束
-        },
-        error: function() {
-            
         }
     })
    
