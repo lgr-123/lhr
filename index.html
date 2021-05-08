@@ -44,7 +44,8 @@
                     <span></span>
                 </div>
                 <a href="#">创作者中心</a>
-                <a href="#">登录</a>
+                <div class="open-load">登录</div>
+
             </div>
         </header>
         <!-- 登录框制作开始 -->
@@ -67,10 +68,74 @@
         </div> -->
 
 
-       
+
         <!-- 登录框制作结束 -->
     </div>
-    <!-- <iframe src="phonenumberLoad.html" frameborder="0" scrolling="no" id="loadByPhone"></iframe> -->
+    <!-- <iframe src="phonenumberLoad.html" frameborder="0" scrolling="no" id="loadByPhone" name="wee"></iframe> -->
+    <!-- 手机号登录 -->
+    <div class="phone-content">
+        <!--1、 输入手机号码与密码，并验证是否正确 -->
+        <div class="load-main">
+            <div class="load-head">登录
+                <span class="load-close">+</span>
+            </div>
+            <div class="phonenum-load">
+                <div class="number">
+                    <div class="countrycode"></div>
+                    <div class="phone-number">
+                        <input type="text" placeholder="请输入手机号" id="user-phone">
+                    </div>
+                </div>
+                <div class="phone-password">
+                    <input type="password" placeholder="请输入密码" id="user-password">
+                </div>
+                <!-- 密码或账号输入错误时提示 -->
+                <div class="load-error">
+                    <i></i>
+                    <span class="load-errortip">请输入正确的密码</span>
+                </div>
+                <div class="other">
+                    <input type="checkbox">
+                    <span>自动登录</span>
+                    <a href="#">忘记密码?</a>
+                </div>
+                <div class="phone-submit"><a href="javascript:;">登录</a></div>
+            </div>
+            <div class="load-othertype">
+                <a href="#">&lt;其他登录方式</a>
+                <a href="#">没有账号？免费注册&gt;</a>
+            </div>
+        </div>
+        <!-- 2、手机号码密码都正确后，提示发送验证码 -->
+        <div class="send-checknum">
+            <div class="check-head">网易云音乐
+                <span class="load-close">+</span>
+            </div>
+            <div class="check-tip">
+                <div class="check-icon"></div>
+                <p>由于你在非受信任的设备上登录，需要进行短信验证
+                    <span>111</span>
+                </p>
+                <div class="check-text">通过短信验证身份</div>
+            </div>
+        </div>
+        <!-- 3、输入验证码并验证 -->
+        <div class="send-finish">
+            <div class="send-head">网易云音乐
+                <span class="load-close">+</span>
+            </div>
+            <div class="send-tip">
+                <p>你的手机号: <span></span></p>
+                <p>为了安全，我们会给你发送短信验证码</p>
+                <div class="checknumber">
+                    <input type="text"><input type="text"><input type="text"><input type="text">
+                </div>
+                <a href="#">重新发送</a>
+                <div class="phone-finish">完成</div>
+            </div>
+
+        </div>
+    </div>
     <!-- 1、 头部制作部分结束 -->
 
     <!-- 2、nav 部分开始 -->
@@ -144,7 +209,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <p class="bottom"><a href="songs.html">Cyber Pop° 城市浸在幻梦中</a></p>
@@ -155,7 +220,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <p class="bottom"><a href="#">在吗？我有个恋爱想和你谈谈</a></p>
@@ -166,7 +231,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <p class="bottom"><a href="#">十七岁的夏天，仿佛永远也不会结束</a></p>
@@ -177,7 +242,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <i></i>
@@ -189,7 +254,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <p class="bottom"><a href="#">你-总是有各种理由让我放弃你☹</a></p>
@@ -200,7 +265,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <i></i>
@@ -212,7 +277,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <p class="bottom"><a href="#">网易云音乐年度热议单曲总结</a></p>
@@ -223,7 +288,7 @@
                                         <div class="float">
                                             <i></i>
                                             <span>28万</span>
-                                            <a href="javascript:;" id="recordPlay"  data-songId="346089"></a>
+                                            <a href="javascript:;" id="recordPlay" data-songId="346089"></a>
                                         </div>
                                     </div>
                                     <i></i>
@@ -387,43 +452,53 @@
                                 <ul class="hotsong-playlist-ul">
                                     <li>
                                         <span>1</span><em><a class="songname">溯 (Reverse) (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>2</span><em><a href="#" class="songname">海底</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>3</span><em><a href="#" class="songname">想说</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>4</span><em><a href="#" class="songname">海阔天空</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>5</span><em><a href="#" class="songname">错位时空 (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>6</span><em><a href="#" class="songname">你会不会也想起我</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>7</span><em><a href="#" class="songname">火花</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>8</span><em><a href="#" class="songname">Avid</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>9</span><em><a href="#" class="songname">Hold Onto The Light</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>10</span><em><a href="#" class="songname">世界的孤儿</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li class="record-liLast">
                                         <a href="#">查看全部 &gt;</a>
@@ -441,43 +516,53 @@
                                 <ul class="newsong-playlist-ul">
                                     <li>
                                         <span>1</span><em><a href="#" class="songname">溯 (Reverse) (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>2</span><em><a href="#" class="songname">海底</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>3</span><em><a href="#" class="songname">想说</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>4</span><em><a href="#" class="songname">海阔天空</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>5</span><em><a href="#" class="songname">错位时空 (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>6</span><em><a href="#" class="songname">你会不会也想起我</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>7</span><em><a href="#" class="songname">火花</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>8</span><em><a href="#" class="songname">Avid</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>9</span><em><a href="#" class="songname">Hold Onto The Light</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>10</span><em><a href="#" class="songname">世界的孤儿</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li class="record-liLast">
                                         <a href="#">查看全部 &gt;</a>
@@ -495,43 +580,53 @@
                                 <ul class="originsong-playlist-ul">
                                     <li>
                                         <span>1</span><em><a href="#" class="songname">溯 (Reverse) (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1500886499"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>2</span><em><a href="#" class="songname">海底</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1426649237"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>3</span><em><a href="#" class="songname">想说</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1483221816"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>4</span><em><a href="#" class="songname">海阔天空</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="346089"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>5</span><em><a href="#" class="songname">错位时空 (Live)</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1808492017"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>6</span><em><a href="#" class="songname">你会不会也想起我</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839454163"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>7</span><em><a href="#" class="songname">火花</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1811118551"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>8</span><em><a href="#" class="songname">Avid</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1835951859"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>9</span><em><a href="#" class="songname">Hold Onto The Light</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839205789"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li>
                                         <span>10</span><em><a href="#" class="songname">世界的孤儿</a></em>
-                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a href="javascript:;"></a><a href="javascript:;"></a></div>
+                                        <div><a href="javascript:;" id="songPlay" data-songId="1839698566"></a><a
+                                                href="javascript:;"></a><a href="javascript:;"></a></div>
                                     </li>
                                     <li class="record-liLast">
                                         <a href="#">查看全部 &gt;</a>
@@ -545,9 +640,35 @@
             </div>
         </div>
         <div class="singer">
-            <div class="load">
-                <span>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</span>
+            <div class="load" id="user-inf">
+                <div class="unload">
+                    <span>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</span>
                 <a href="#">用户登录</a>
+                </div>
+               <div class="user-hid">
+                <div class="user-personinf">
+                    <img src="imgs/109951163196264890.jpg" alt="">
+                    <p>哦哦哦i1803</p>
+                    <span>lv.7</span>
+                    <a href="javascript:;">签到</a>
+                </div>
+                <div class="user-detail">
+                    <ul id="user-detail-ul">
+                        <li>
+                            <p>0</p>
+                            <span>动态</span>
+                        </li>
+                        <li>
+                            <p>4</p>
+                            <span>关注</span>
+                        </li>
+                        <li>
+                            <p>1</p>
+                            <span>粉丝</span>
+                        </li>
+                    </ul>
+                </div>
+               </div>
             </div>
             <div class="sort-center">
                 <div class="gesho">
@@ -684,18 +805,19 @@
     <!-- 6、隐藏的播放设置部分开始 -->
     <div class="play-hid">
         <div class="w">
-            <div class="play-left"><a href="javascript:;"></a><a href="javascript:;" id="hid-play"></a><a href="javascript:;"></a></div>
+            <div class="play-left"><a href="javascript:;"></a><a href="javascript:;" id="hid-play"></a><a
+                    href="javascript:;"></a></div>
             <div class="play-middle">
-               <a href="javascript:;"><img src="imgs/play-songImg.jpg" alt=""></a>
-               <a href="songs.html" class="hid-songname">How to Carry On</a>
-               <a href="javascript:;">Wildflowers/</a>
-               <a href="javascript:;">Christine Smit</a>
-               <a href="javascript:;">3</a>
-               <div class="bar">
-                   <div class="processtime"></div>  <!-- 进度条 -->
-                   <span class="processcircle"></span>
-                   <i class="now-time">00:49</i><i>/</i><i class="sum-time">33:10</i>
-               </div>
+                <a href="javascript:;"><img src="imgs/play-songImg.jpg" alt=""></a>
+                <a href="songs.html" class="hid-songname">How to Carry On</a>
+                <a href="javascript:;">Wildflowers/</a>
+                <a href="javascript:;">Christine Smit</a>
+                <a href="javascript:;">3</a>
+                <div class="bar">
+                    <div class="processtime"></div> <!-- 进度条 -->
+                    <span class="processcircle"></span>
+                    <i class="now-time">00:49</i><i>/</i><i class="sum-time">33:10</i>
+                </div>
             </div>
             <div class="play-right"></div>
         </div>

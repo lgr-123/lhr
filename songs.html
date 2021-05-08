@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/songs.css">
+    <script src="js/AJAX.js"></script>
+    <script src="js/songs.js"></script>
 </head>
 <body>
     <div class="head">
@@ -48,11 +50,39 @@
         </div>
     </nav>
     <div class="content w">
-        <div>
-            
+        <div class="song-picture"><img alt=""></div>
+        <div class="songName">烟火里的尘埃</div>
+        <div class="singerName">华晨宇</div>
+        <div class="lyric"></div>
+        <div class="music-icon">
+            <img src="imgs/music-icon.jpg" alt="">
+           <div class="music-set">
+              <div class="voice">
+                  <a href="javascript:;"></a>
+                 <div class="voice-progress">
+                     <div class="now-voice-progress"></div>
+                 </div>
+                  <a href="javascript:;"></a>
+              </div>
+              <div class="music-play">
+                  <a href="javascript:;"></a>
+                  <a href="javascript:;" id="btnPlay"></a>
+                  <a href="javascript:;"></a>
+              </div>
+              <div class="otherset">
+                  <a href="javascript:;"></a>
+                  <a href="javascript:;"></a>
+              </div>
+           </div>
+           <div class="music-time">
+               <span class="now-time">00:17</span>
+               <span class="total-time">06:24</span>
+           </div>
         </div>
-        <div></div>
+        <div class="music-word">听  &nbsp; &nbsp; 音乐与好时光</div>
     </div>
+<audio src="https://music.163.com/song/media/outer/url?id=29004400" id="music-play"></audio>
+
     <footer>
         <div class="w footer-center">
             <div class="footer-word">
@@ -107,7 +137,7 @@
     </footer>
 
         <!-- 隐藏的播放设置部分开始 -->
-        <div class="play-hid">
+        <!-- <div class="play-hid">
             <div class="w">
                 <div class="play-left"><a href="javascript:;"></a><a href="javascript:;" id="hid-play"></a><a href="javascript:;"></a></div>
                 <div class="play-middle">
@@ -117,14 +147,14 @@
                    <a href="javascript:;">Christine Smit</a>
                    <a href="javascript:;">3</a>
                    <div class="bar">
-                       <div class="processtime"></div>  <!-- 进度条 -->
+                       <div class="processtime"></div> 
                        <span class="processcircle"></span>
                        <i class="now-time">00:49</i><i>/</i><i class="sum-time">33:10</i>
                    </div>
                 </div>
                 <div class="play-right"></div>
             </div>
-        </div>
+        </div> -->
         <!-- 隐藏的播放设置部分结束 -->
 </body>
 </html>

@@ -161,16 +161,9 @@ window.addEventListener('load', function () {
     // })
 
 
-    // 手机登录框部分
-    let loadByPhone = document.querySelector("#loadByPhone");
-    let user_close = document.querySelectorAll('.load-close');
+    // loadByPhone.referrerpolicy = 'origin-when-cross-origin';
 
-    console.log(user_close);
-    for (let i = 0; i < user_close.length; i++) {
-        user_close[i].addEventListener('click', function () {
-            this.parentNode.parentNode.style.display = 'none';
-        })
-    }
+
     // console.log(loadByPhone.contentWindow);
     // var iwindow = loadByPhone.contentWindow;
     // console.log('window', loadByPhone.contentWindow);
@@ -242,7 +235,7 @@ window.addEventListener('load', function () {
     })
 
 
-      // 原创榜榜歌单获取
+    // 原创榜榜歌单获取
     const originSongPlaylist = document.querySelector('.originsong-playlist-ul');
 
     originAjax({
@@ -262,7 +255,216 @@ window.addEventListener('load', function () {
 
 
 
-    
+    // 登录部分开始
+
+
+    let user_phone = document.querySelector('#user-phone');
+    let user_password = document.querySelector("#user-password");
+    let user_submit = document.querySelector('.phone-submit');
+    let user_errortip = document.querySelector('.load-errortip');
+    let user_loaderror = document.querySelector('.load-error');
+    let user_isTrue = true;
+    let user_sendchecknum = document.querySelector('.check-text');
+    let checknum = document.querySelector('.checknumber');
+    let user_inputs = checknum.querySelectorAll('input');
+    let user_checknums = '';
+    let user_finish = document.querySelector('.phone-finish');
+    let load_main = document.querySelector('.load-main');
+    let send_checknum = document.querySelector('.send-checknum');
+    let send_finish = document.querySelector('.send-finish');
+    let user_close = document.querySelectorAll('.load-close');
+    let load_open = document.querySelector('.open-load');
+
+
+
+
+    load_main.style.display = 'none';
+    load_open.addEventListener('click', function () {
+        load_main.style.display = 'block';
+        user_password.value = '';
+    })
+
+    for (let i = 0; i < user_close.length; i++) {
+        user_close[i].addEventListener('click', function () {
+            this.parentNode.parentNode.style.display = 'none';
+        })
+    }
+
+
+    // 实现拖动登录框
+
+
+
+
+
+    // 验证手机号码和密码是否正确
+    user_submit.addEventListener('click', function () {
+        user_isTrue = false;
+        if (user_phone.value.length != 11) {
+            user_errortip.innerHTML = '请输入正确的手机号码格式！';
+            user_loaderror.style.display = 'block';
+            user_isTrue = false;
+        } else {
+            if (user_password.placeholder == '请输入密码') {
+                user_errortip.innerHTML = '密码不能为空！';
+                user_loaderror.style.display = 'block';
+                user_isTrue = false;
+            }
+            if (user_password.value != '') {
+                user_loaderror.style.display = 'none';
+                user_isTrue = true
+            }
+        }
+
+        if (user_isTrue) {
+            originAjax({
+                type: 'get',
+                url: 'https://autumnfish.cn/login/cellphone',
+                data: {
+                    phone: user_phone.value,
+                    password: user_password.value
+                },
+                success: function (obj) {
+                    console.log(obj);
+                    // 密码或账号输入错误时
+                    if (obj.code != 200) {
+                        user_errortip.innerHTML = '密码或手机号码不正确';
+                        user_loaderror.style.display = 'block';
+                    }
+                    else {
+                        // 密码账号都正确时
+                        user_loaderror.style.display = 'none';
+                        load_main.style.display = 'none';
+                        send_checknum.style.display = 'block';
+                        user_submit.setAttribute('phoneId', obj.account.id);
+                    }
+
+                }
+            });
+        }
+
+
+
+    })
+
+    // 发送验证码
+    user_sendchecknum.addEventListener('click', function () {
+        if (user_submit.getAttribute('phoneId')) {
+            originAjax({
+                type: 'get',
+                url: 'https://autumnfish.cn/captcha/sent',
+                data: {
+                    phone: user_phone.value,
+                },
+                success: function (obj) {
+                    console.log(obj);
+                    //    if(obj.code === 200) {
+                    //        originAjax({
+                    //            type: 'get',
+                    //            url: 'https://autumnfish.cn/captcha/verify?phone='+user_phone.value+'&captcha='
+                    //        })
+                    //    }
+                    send_checknum.style.display = 'none';
+                    send_finish.style.display = 'block';
+                }
+            });
+        }
+
+    })
+
+
+    // 检验验证码是否正确
+    user_finish.addEventListener('click', function () {
+        let isNull = true;
+        for (let i = 0; i < 4; i++) {
+            if (user_inputs[i].value == '') {
+                isNull = false;
+                break;
+            }
+        }
+
+        if (isNull) {
+            user_checknums = '';
+            for (let i = 0; i < 4; i++) {
+                console.log(user_inputs[i].value);
+                user_checknums += user_inputs[i].value;
+            }
+        }
+
+        originAjax({
+            type: 'get',
+            url: 'https://autumnfish.cn/captcha/verify',
+            data: {
+                phone: user_phone.value,
+                captcha: user_checknums
+            },
+            success: function (obj) {
+                if (obj.code == 200) {
+
+                    send_finish.style.display = 'none';
+                    // user_submit.setAttribute('isLoad', 'true');
+                    let user_inf = document.querySelector('#user-inf');
+                    let user_personinf = document.querySelector('.user-personinf');
+
+                    // user_inf.style.backgroundColor = '#f5f5f5';
+                    // user_inf.innerHTML = '<div class="user-personinf"><img><p>哦哦哦i1803</p><span>lv.7</span>  <a href="javascript:;">签到</a> </div> <div class="user-detail"> <ul><li> <p>0</p><span>动态</span></li><li><p>4</p><span>关注</span></li><li><p>1</p><span>粉丝</span></li></ul></div>'
+                    let phoneId = user_submit.getAttribute('phoneId')
+
+                    let user_loadifn = document.querySelector('.user-hid');
+                    let user_unload = document.querySelector('.unload');
+                    user_unload.style.display = 'none';
+                    user_loadifn.style.display = 'block';
+                    originAjax({
+                        url: 'https://autumnfish.cn/user/detail',
+                        data: {
+                            uid: phoneId
+                        },
+                        success: function (obj) {
+
+                            load_open.innerHTML = '<img src="' + obj.profile.avatarUrl + '">';
+
+                            let user_detail = document.querySelector('#user-detail-ul');
+
+                            user_inf.style.width = 250 + 'px';
+                            user_inf.style.height = 185 + 'px';
+
+                            user_personinf.querySelector('img').src = obj.profile.avatarUrl;
+                            user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
+                            user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
+                            user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
+                            user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
+                            user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
+
+
+                        }
+
+                    })
+                }
+                
+            }
+        })
+
+
+    })
+
+
+
+    // user_submit.getAttribute('isLoad').onchange= function() {
+    //     alert(11);
+    // }
+
+
+    if (user_submit.getAttribute('phoneId')) {
+        alert(111);
+    }
+
+
+
+
+    // 登录部分结束
+
+
+
 
 
 
