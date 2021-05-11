@@ -50,6 +50,7 @@
 
 .content .lyric {
     float: right;
+    position: relative;
     overflow: scroll;
     margin: -40px 60px 0 0;
     width: 400px;
@@ -68,9 +69,9 @@
     /* background: red; */
 }
 
-/* .content .lyric p {
-
-} */
+.content .lyric p:hover {
+    cursor: pointer;
+}
 
 .content .songName {
     margin: 80px 0 0 30px;
@@ -101,6 +102,7 @@
 
 .content .music-icon:hover {
     width: 460px;
+    cursor: pointer;
 }
 
 .content .music-icon img {

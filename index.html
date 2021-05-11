@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/songs.css">
     <script src="js/AJAX.js"></script>
     <!-- 引入动画js文件 -->
     <script src="js/animate.js"></script>
     <!-- 引入轮播图js文件 -->
     <script src="js/index.js"></script>
     <script src="js/banner.js"></script>
-
     <style>
 
     </style>
@@ -40,7 +40,47 @@
             <div>
                 <div class="search">
                     <i></i>
-                    <input type="text" placeholder="音乐/视频/电台/用户">
+                    <input type="text" placeholder="音乐/视频/电台/用户" id="search-input">
+                    <div class="search-hid">
+                        <div class="relate-user">搜'<span id="relate-user"></span>'相关用户 &gt;</div>
+                        <div class="relate-song">
+                            <span>
+                                <i></i>
+                                单曲</span>
+                            <ul id="relate-song">
+                                <!-- <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-singer">
+                            <span>
+                                <i></i>
+                                歌手</span>
+                            <ul id="relate-singer">
+                                <!-- <Li>hhhhhh</Li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-ablum">
+                            <span>
+                                <i></i>
+                                专辑</span>
+                            <ul id="relate-ablum">
+                                <!-- <li>ddddddd</li>
+                                <li>wesecffwe</li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-playlists">
+                            <span>
+                                <i></i>
+                                歌单</span>
+                            <ul id="relate-playlists">
+                                <!-- <li>当事人色粉</li>
+                                <li>设法分为</li> -->
+                            </ul>
+                        </div>
+                    </div>
                     <span></span>
                 </div>
                 <a href="#">创作者中心</a>
@@ -72,70 +112,7 @@
         <!-- 登录框制作结束 -->
     </div>
     <!-- <iframe src="phonenumberLoad.html" frameborder="0" scrolling="no" id="loadByPhone" name="wee"></iframe> -->
-    <!-- 手机号登录 -->
-    <div class="phone-content">
-        <!--1、 输入手机号码与密码，并验证是否正确 -->
-        <div class="load-main">
-            <div class="load-head">登录
-                <span class="load-close">+</span>
-            </div>
-            <div class="phonenum-load">
-                <div class="number">
-                    <div class="countrycode"></div>
-                    <div class="phone-number">
-                        <input type="text" placeholder="请输入手机号" id="user-phone">
-                    </div>
-                </div>
-                <div class="phone-password">
-                    <input type="password" placeholder="请输入密码" id="user-password">
-                </div>
-                <!-- 密码或账号输入错误时提示 -->
-                <div class="load-error">
-                    <i></i>
-                    <span class="load-errortip">请输入正确的密码</span>
-                </div>
-                <div class="other">
-                    <input type="checkbox">
-                    <span>自动登录</span>
-                    <a href="#">忘记密码?</a>
-                </div>
-                <div class="phone-submit"><a href="javascript:;">登录</a></div>
-            </div>
-            <div class="load-othertype">
-                <a href="#">&lt;其他登录方式</a>
-                <a href="#">没有账号？免费注册&gt;</a>
-            </div>
-        </div>
-        <!-- 2、手机号码密码都正确后，提示发送验证码 -->
-        <div class="send-checknum">
-            <div class="check-head">网易云音乐
-                <span class="load-close">+</span>
-            </div>
-            <div class="check-tip">
-                <div class="check-icon"></div>
-                <p>由于你在非受信任的设备上登录，需要进行短信验证
-                    <span>111</span>
-                </p>
-                <div class="check-text">通过短信验证身份</div>
-            </div>
-        </div>
-        <!-- 3、输入验证码并验证 -->
-        <div class="send-finish">
-            <div class="send-head">网易云音乐
-                <span class="load-close">+</span>
-            </div>
-            <div class="send-tip">
-                <p>你的手机号: <span></span></p>
-                <p>为了安全，我们会给你发送短信验证码</p>
-                <div class="checknumber">
-                    <input type="text"><input type="text"><input type="text"><input type="text">
-                </div>
-                <a href="#">重新发送</a>
-                <div class="phone-finish">完成</div>
-            </div>
-
-        </div>
-    </div>
+   
     <!-- 1、 头部制作部分结束 -->
 
     <!-- 2、nav 部分开始 -->
@@ -445,7 +422,7 @@
                         <div class="record-hotSong">
                             <div class="record-head">
                                 <a href=""><img src="imgs/record-hot.jpg" alt=""></a>
-                                <p>新歌榜</p>
+                                <p>飙升榜</p>
                                 <a href="#" id="record-play"></a><a href="#" id="record-collect"></a>
                             </div>
                             <div class="record-song">
@@ -509,7 +486,7 @@
                         <div class="record-newSong">
                             <div class="record-head">
                                 <a href=""><img src="imgs/record-new.jpg" alt=""></a>
-                                <p>飙升榜</p>
+                                <p>新歌榜</p>
                                 <a href="#" id="record-play"></a><a href="#" id="record-collect"></a>
                             </div>
                             <div class="record-song">
@@ -643,32 +620,32 @@
             <div class="load" id="user-inf">
                 <div class="unload">
                     <span>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</span>
-                <a href="#">用户登录</a>
+                    <a href="#">用户登录</a>
                 </div>
-               <div class="user-hid">
-                <div class="user-personinf">
-                    <img src="imgs/109951163196264890.jpg" alt="">
-                    <p>哦哦哦i1803</p>
-                    <span>lv.7</span>
-                    <a href="javascript:;">签到</a>
+                <div class="user-hid">
+                    <div class="user-personinf">
+                        <img src="imgs/109951163196264890.jpg" alt="">
+                        <p>哦哦哦i1803</p>
+                        <span>lv.7</span>
+                        <a href="javascript:;">签到</a>
+                    </div>
+                    <div class="user-detail">
+                        <ul id="user-detail-ul">
+                            <li>
+                                <p>0</p>
+                                <span>动态</span>
+                            </li>
+                            <li>
+                                <p>4</p>
+                                <span>关注</span>
+                            </li>
+                            <li>
+                                <p>1</p>
+                                <span>粉丝</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="user-detail">
-                    <ul id="user-detail-ul">
-                        <li>
-                            <p>0</p>
-                            <span>动态</span>
-                        </li>
-                        <li>
-                            <p>4</p>
-                            <span>关注</span>
-                        </li>
-                        <li>
-                            <p>1</p>
-                            <span>粉丝</span>
-                        </li>
-                    </ul>
-                </div>
-               </div>
             </div>
             <div class="sort-center">
                 <div class="gesho">
@@ -809,7 +786,7 @@
                     href="javascript:;"></a></div>
             <div class="play-middle">
                 <a href="javascript:;"><img src="imgs/play-songImg.jpg" alt=""></a>
-                <a href="songs.html" class="hid-songname">How to Carry On</a>
+                <a href="javascript" class="hid-songname">How to Carry On</a>
                 <a href="javascript:;">Wildflowers/</a>
                 <a href="javascript:;">Christine Smit</a>
                 <a href="javascript:;">3</a>
@@ -823,6 +800,10 @@
         </div>
     </div>
     <!-- 6、隐藏的播放设置部分结束 -->
+
+  
+
+
     <audio></audio>
 </body>
 

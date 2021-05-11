@@ -2,6 +2,11 @@
 
 .phone-content {
     position: relative;
+    width: 530px;
+    height: 345px;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .load-main,

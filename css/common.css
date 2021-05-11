@@ -1,15 +1,11 @@
 @font-face {
     font-family: 'icomoon';
-    src:  url('../fonts/icomoon.eot?4gb7w');
-    src:  url('../fonts/icomoon.eot?4gb7w#iefix') format('embedded-opentype'),
-      url('../fonts/icomoon.ttf?4gb7w') format('truetype'),
-      url('../fonts/icomoon.woff?4gb7w') format('woff'),
-      url('../fonts/icomoon.svg?4gb7w#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?4gb7w');
+    src: url('../fonts/icomoon.eot?4gb7w#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?4gb7w') format('truetype'), url('../fonts/icomoon.woff?4gb7w') format('woff'), url('../fonts/icomoon.svg?4gb7w#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
-  }
-  
+}
 
 body {
     background-color: #f2f2f2;
@@ -86,7 +82,7 @@ header>div .search {
     background-color: #fff;
 }
 
-header>div .search i {
+header>div .search>i {
     position: absolute;
     top: 7px;
     left: 12px;
@@ -118,6 +114,150 @@ header>div .search input {
     height: 30px;
     font-size: 12px;
 }
+
+
+/* 隐藏的搜索信息 */
+header>div .search .search-hid {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 999;
+    width: 240px;
+    /* height: 303px; */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+header>div .search .search-hid .relate-user {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 8px;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+}
+
+header>div .search .search-hid .relate-song {
+    display: flex;
+    width: 100%;
+    /* height: 110px; */
+}
+
+header>div .search .search-hid .relate-song span,
+header>div .search .search-hid .relate-singer span,
+header>div .search .search-hid .relate-ablum span,
+header>div .search .search-hid .relate-playlists span {
+    padding: 8px 0 0 10px;
+    width: 54px;
+    line-height:normal;
+}
+
+header>div .search .search-hid .relate-song span i {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background: url(../imgs/icon.png) no-repeat -35px -300px;
+}
+
+header>div .search .search-hid .relate-song ul {
+    flex: 1;
+    border: 1px solid #ccc;
+}
+
+header>div .search .search-hid .relate-song ul li {
+    width: 182px;
+    height: 28px;
+    line-height: 28px;
+    padding: 5px 0 5px 8px;
+      /* 以下三行代码实现文本溢出是显示省略号的效果 */
+      overflow: hidden;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+}
+
+header>div .search .search-hid  ul li:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+header>div .search .search-hid .relate-singer {
+    display: flex;
+    width: 100%;
+    /* height: 32px; */
+}
+
+header>div .search .search-hid .relate-singer span i {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background: url(../imgs/icon.png) no-repeat -50px -300px;
+}
+
+header>div .search .search-hid .relate-singer ul {
+    flex: 1;
+    border-left: 1px solid #ccc;
+    line-height: 32px;
+    background-color: #f9f8f8;
+}
+
+
+header>div .search .search-hid .relate-ablum {
+    display: flex;
+    width: 100%;
+    /* height: 60px; */
+}
+
+header>div .search .search-hid .relate-ablum i{
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background: url(../imgs/icon.png) no-repeat -35px -320px;
+}
+
+header>div .search .search-hid .relate-ablum ul {
+    flex: 1;
+    border: 1px solid #ccc;
+}
+
+header>div .search .search-hid .relate-ablum ul li,
+header>div .search .search-hid .relate-playlists ul li,
+header>div .search .search-hid .relate-singer ul li{
+    width: 182px;
+    height: 28px;
+    padding: 5px 0 5px 8px;
+    line-height: 28px;
+      /* 以下三行代码实现文本溢出是显示省略号的效果 */
+      overflow: hidden;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+}
+
+header>div .search .search-hid .relate-playlists {
+    display: flex;
+    width: 100%;
+    /* height: 60px; */
+}
+
+header>div .search .search-hid .relate-playlists span i {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background: url(../imgs/icon.png) no-repeat -50px -320px;
+}
+
+header>div .search .search-hid .relate-playlists ul {
+    flex: 1;
+    border: 1px solid #ccc;
+    background-color: #f9f8f8;
+}
+
+
+
+
+
+
 
 header>div a:nth-child(2) {
     margin: 19px 10px 0 10px;

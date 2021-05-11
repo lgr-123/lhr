@@ -1,0 +1,121 @@
+.register {
+    /* overflow: hidden; */
+    width: 528px;
+    height: 360px;
+    border: 1.2px solid #ccc;
+    border-radius: 6px;
+}
+
+.register .register-head {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    line-height: 38px;
+    background-color: #2d2d2d;
+}
+
+.register .register-head span {
+    float: left;
+    color: #fff;
+    font-weight: 700;
+}
+
+.register .register-head i {
+    float: right;
+    color: #ccc;
+    font-size: 20px;
+    transform: rotate(45deg);
+}
+
+.register .register-content {
+    margin: 30px auto 45px auto;
+    width: 220px;
+    height: 240px;
+ 
+    background-color: pink;
+}
+
+.register .register-content span {
+    color: #666;
+    font-size: 12px;
+
+}
+
+.register .register-content .number {
+    display: flex;
+    width: 220px;
+    margin-top: 8px;
+}
+
+.register .register-content .number span {
+    display: inline-block;
+    width: 44px;
+    height: 30px;
+    background-color: green;
+}
+
+.register .register-content .number input {
+    flex: 1;
+}
+
+.register .register-content>input {
+    margin-top: 8px;
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+}
+
+.register .register-content .tips {
+    margin-top:2px;
+    width: 100%;
+    height: 64px;
+    font-size: 12px;
+}
+
+.register .register-content .tips p {
+    margin-bottom: 6px;
+}
+
+.register .register-content .tips p i {
+    display: inline-block;
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    background: url(../imgs/licon.jpeg) no-repeat;
+}
+
+.register .next-step {
+    margin-top: 20px;
+    width: 100%;
+    height: 31px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 31px;
+    border-radius: 6px;
+    background-color: #2576c5;
+}
+
+.register .next-step:hover {
+    cursor: pointer;
+}
+
+.register .register-fotter {
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+.register .register-fotter a {
+    font-size: 12px;
+    line-height: 50px;
+    margin-left: 10px;
+    color: #0c72c3;
+}
+
+
+
+
