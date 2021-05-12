@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<link rel="stylesheet" href="css/register.css">
-<link rel="stylesheet" href="css/base.css">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/AJAX.js"></script>
+    <script src="js/register.js"></script>
 </head>
+
 <body>
-    <div class="register">
-        <div class="register-head">
-           <span>手机号注册</span>
-           <i>+</i>
-        </div>
-        <div class="register-content">
-            <span>手机号</span>
-           <div class="number"> 
-               <span></span>   
-               <input type="text" class="tel" placeholder="请输入手机号码">
+    <div class="register-content">
+        <div class="register">
+            <div class="register-head">手机号注册</div>
+            <div class="register-content">
+                <span>手机号</span>
+                <div class="number">
+                    <span></span>
+                    <input type="text" class="tel" placeholder="请输入手机号码">
+                </div>
+                <span>密码</span>
+                <input type="password" class="pas" placeholder="请输入密码">
+                <div class="tips">
+                    <p class="checkphone"><i></i>手机号码格式不对！</p>
+                    <p><i></i> 密码不能包含空格</p>
+                    <p><i></i> 包含字母、数字、符号中至少两种</p>
+                    <p><i></i>密码长度为8-20位</p>
+                </div>
+                <div class="next-step">下一步</div>
             </div>
-            <span>密码</span>
-            <input type="password" class="pas" placeholder="请输入密码">
-<div class="tips">
-    <p><i></i> 密码不能包含空格</p>
-    <p><i></i> 包含字母、数字、符号中至少两种</p>
-    <p><i></i>密码长度为8-20位</p>
-</div>
-<div class="next-step">下一步</div>
+            <div class="register-fotter">
+                <a href="javascript:;">&lt;返回登录</a>
+            </div>
         </div>
-        <div class="register-fotter">
-            <a href="javascript:;">&lt;返回登录</a>
+
+        <div class="send-finish">
+            <div class="send-head">网易云音乐</div>
+            <div class="send-tip">
+                <p>你的手机号: <span class="send-phoneId"></span></p>
+                <p>为了安全，我们会给你发送短信验证码</p>
+                <div class="checknumber">
+                    <input type="text"><input type="text"><input type="text"><input type="text">
+                </div>
+                <a href="javascript:;" class="resend">20s</a>
+                <div class="register-finish">完成</div>
+                <i class='mistake'></i>
+            </div>
+
         </div>
     </div>
+
 </body>
+
 </html>

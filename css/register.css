@@ -1,12 +1,20 @@
+.register-content {
+    margin: 150px auto;
+    width: 528px;
+    height: 360px;
+    font-size: 12px;
+}
 .register {
     /* overflow: hidden; */
     width: 528px;
-    height: 360px;
+    height: 404px;
     border: 1.2px solid #ccc;
     border-radius: 6px;
 }
 
-.register .register-head {
+.register .register-head,
+.register-send .check-head,
+.send-finish .send-head {
     width: 100%;
     height: 38px;
     padding: 0 12px;
@@ -14,25 +22,19 @@
     background-color: #2d2d2d;
 }
 
-.register .register-head span {
-    float: left;
+.register .register-head,
+.register-send .check-head,
+.send-finish .send-head{
     color: #fff;
+    font-size: 16px;
     font-weight: 700;
 }
 
-.register .register-head i {
-    float: right;
-    color: #ccc;
-    font-size: 20px;
-    transform: rotate(45deg);
-}
 
 .register .register-content {
     margin: 30px auto 45px auto;
     width: 220px;
     height: 240px;
- 
-    background-color: pink;
 }
 
 .register .register-content span {
@@ -56,6 +58,7 @@
 
 .register .register-content .number input {
     flex: 1;
+    border: 1px solid #ccc;
 }
 
 .register .register-content>input {
@@ -63,12 +66,13 @@
     width: 100%;
     height: 30px;
     font-size: 12px;
+    border: 1px solid #ccc;
 }
 
 .register .register-content .tips {
     margin-top:2px;
     width: 100%;
-    height: 64px;
+    /* height: 64px; */
     font-size: 12px;
 }
 
@@ -83,6 +87,8 @@
     height: 14px;
     vertical-align: middle;
     background: url(../imgs/licon.jpeg) no-repeat;
+  
+    /* background: url(../imgs/icon.png) no-repeat -50px -270px; */
 }
 
 .register .next-step {
@@ -116,6 +122,109 @@
     color: #0c72c3;
 }
 
+/* 发送验证码 */
+.register-content .send-finish {
+    display: none;
+}
+
+.register-send {
+    width: 530px;
+    height: 330px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.register-send .check-tip {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 220px;
+    height: 290px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.register-send .check-tip .check-icon {
+    margin: 32px auto 18px auto;
+    width: 94px;
+    height: 90px;
+    background: url(../imgs/pic_default.png) no-repeat;
+    background-size: contain;
+}
+
+.register-send .check-tip .check-text {
+    margin: 20px auto 0 auto;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 6px;
+    background-color: #2979c7;
+}
+
+/* 验证验证码 */
+.register-content .send-finish {
+    width: 530px;
+    height: 270px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px -1px;
+    background-color: #fff;
+} 
+
+.register-content .send-finish .send-tip {
+    margin: 0 auto;
+    padding-top: 25px;
+    width: 220px;
+    height: 228px;
+    font-size: 12px;
+    color: #666;
+}
+
+.register-content .send-finish .send-tip p {
+    margin-bottom: 6px;
+}
+
+.register-content .send-finish .send-tip .checknumber {
+    margin-top: 24px;
+}
+
+.register-content .send-finish .send-tip .checknumber input {
+    float: left;
+    margin-right: 5px;
+    padding-left: 10px;
+    width: 50px;
+    height: 30px;
+    border-bottom: 2px solid #ccc;
+}
+
+.register-content .send-finish .send-tip>a {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    color: #0c72c3;
+}
+
+.register-content .send-finish .send-tip .register-finish { 
+    width: 100%;
+    height: 30px;
+    /* 清除浮动 */
+    clear: both;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #2979c7;
+}
+
+.register-content .send-finish .send-tip .register-finish:hover {
+    cursor: pointer;
+}
+
+.register-content .send-finish .send-tip .mistake {
+    display: block;
+    width: 100%;
+    margin: 10px 70px;
+    color: red;
+}
 
 
 
