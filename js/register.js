@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
 
-    
+
     let tel = document.querySelector('.tel');
     let pas = document.querySelector('.pas');
     let next_step = document.querySelector('.next-step');
@@ -211,6 +211,7 @@ registerFinish.addEventListener('click', function () {
             },
             success: function (obj) {
                 console.log(obj);
+                // 验证码验证成功后跳转到登录页面
                 location.href = 'phonenumberLoad.html';
             },
             error: function(obj) {

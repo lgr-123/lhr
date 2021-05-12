@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/search.css">
+    <script src="js/AJAX.js"></script>
+    <script src="js/search.js"></script>
+</head>
+<body>
+      <!-- 1、 头部制作部分开始 -->
+      <div class="head">
+        <header>
+            <a href="#"></a>
+            <ul>
+                <li><a href="#">发现音乐</a></li>
+                <li><a href="#">我的音乐</a></li>
+                <li><a href="#">朋友</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">音乐人</a></li>
+                <li>
+                    <a href="#">下载客户端</a>
+                    <span></span>
+                </li>
+            </ul>
+            <div>
+                <div class="search">
+                    <i></i>
+                    <input type="text" placeholder="音乐/视频/电台/用户" id="search-input">
+                    <div class="search-hid">
+                        <div class="relate-user">搜'<span id="relate-user"></span>'相关用户 &gt;</div>
+                        <div class="relate-song">
+                            <span>
+                                <i></i>
+                                单曲</span>
+                            <ul id="relate-song">
+                                <!-- <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li>
+                               <li>爱就一个字-王赫野 </li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-singer">
+                            <span>
+                                <i></i>
+                                歌手</span>
+                            <ul id="relate-singer">
+                                <!-- <Li>hhhhhh</Li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-ablum">
+                            <span>
+                                <i></i>
+                                专辑</span>
+                            <ul id="relate-ablum">
+                                <!-- <li>ddddddd</li>
+                                <li>wesecffwe</li> -->
+                            </ul>
+                        </div>
+                        <div class="relate-playlists">
+                            <span>
+                                <i></i>
+                                歌单</span>
+                            <ul id="relate-playlists">
+                                <!-- <li>当事人色粉</li>
+                                <li>设法分为</li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <span></span>
+                </div>
+                <a href="#">创作者中心</a>
+                <div class="open-load">登录</div>
+
+            </div>
+        </header>
+    </div>
+      <!-- 2、nav 部分开始 -->
+      <nav>
+        <div class="center">
+            <ul>
+                <li><a href="#">推荐</a></li>
+                <li><a href="#">排行榜</a></li>
+                <li><a href="#">歌单</a></li>
+                <li><a href="#">主播电台</a></li>
+                <li><a href="#">歌手</a></li>
+                <li><a href="#">新碟上架</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 2、nav 部分结束 -->
+<div class="content w">
+    <div class="search-input">
+        <input type="text">
+        <div class="btn"></div>
+    </div>
+    <div class="search-nav">
+        <!-- 提示搜索结果 -->
+        <div class="tips">搜索“你”，找到 20 首单曲</div>
+        <!-- 搜索导航栏 -->
+        <div class="search-head">
+            <ul>
+                <li type="1">单曲</li>
+                <li type="100">歌手</li>
+                <li type="10">专辑</li>
+                <li type="1014">视频</li>
+                <li type="1006">歌词</li>
+                <li type="1000">歌单</li>
+                <li type="1009">声音主播</li>
+                <li type="1002">用户</li>
+            </ul>
+        </div>
+        <div class="search-content">
+        <!-- <ul class="search-song">
+           <li>
+            <div>
+                <span></span>
+                www</div>
+            <div>
+               <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div>ddd</div>
+            <div>1111</div>
+            <div>3ffff</div>
+           </li>
+        </ul>
+        <ul class="search-singer"></ul>
+        </div> -->
+    </div>
+    <!-- 搜索的主要内容 -->
+    <div class="search-main">
+
+    </div>
+</div>
+</div>
+     <!-- 4、底部部分开始 -->
+     <footer>
+        <div class="w footer-center">
+            <div class="footer-word">
+                <div class="clearfix">
+                    <ul>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <span>网易公司版权所有©1997-2021&nbsp; &nbsp; 杭州乐读科技有限公司运营:</span>
+                    <a href="#"> 浙网文[2021] 1186-054号</a>
+                </div>
+                <div>
+                    <span>违法和不良信息举报电话：0571-89853516 &nbsp; &nbsp; 举报邮箱: &nbsp; </span>
+                    <a href="#">ncm5990@163.com</a>
+                </div>
+                <div>
+                    <a href="#">粤B2-20090191-18 工业和信息化部备案管理系统网站 </a>
+                    <i></i>
+                    <a href="#"> 浙公网安备 33010902002564号</a>
+                </div>
+            </div>
+            <div class="footer-icon">
+                <ul>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- 4、底部部分结束 -->
+</body>
+</html>
