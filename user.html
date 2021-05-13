@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>搜索</title>
-    <link rel="stylesheet" href="css/common.css">
+    <title>个人主页</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/user.css">
     <script src="js/common.js"></script>
-    <script src="js/search.js"></script>
+    <script src="js/user.js"></script>
 </head>
+
 <body>
-      <!-- 1、 头部制作部分开始 -->
-      <div class="head">
+    <!-- 1、 头部制作部分开始 -->
+    <div class="head">
         <header>
             <a href="#"></a>
             <ul>
@@ -38,10 +40,6 @@
                                 <i></i>
                                 单曲</span>
                             <ul id="relate-song">
-                                <!-- <li>爱就一个字-王赫野 </li>
-                               <li>爱就一个字-王赫野 </li>
-                               <li>爱就一个字-王赫野 </li>
-                               <li>爱就一个字-王赫野 </li> -->
                             </ul>
                         </div>
                         <div class="relate-singer">
@@ -49,7 +47,6 @@
                                 <i></i>
                                 歌手</span>
                             <ul id="relate-singer">
-                                <!-- <Li>hhhhhh</Li> -->
                             </ul>
                         </div>
                         <div class="relate-ablum">
@@ -57,8 +54,6 @@
                                 <i></i>
                                 专辑</span>
                             <ul id="relate-ablum">
-                                <!-- <li>ddddddd</li>
-                                <li>wesecffwe</li> -->
                             </ul>
                         </div>
                         <div class="relate-playlists">
@@ -66,76 +61,87 @@
                                 <i></i>
                                 歌单</span>
                             <ul id="relate-playlists">
-                                <!-- <li>当事人色粉</li>
-                                <li>设法分为</li> -->
                             </ul>
                         </div>
                     </div>
                     <span></span>
                 </div>
                 <a href="#">创作者中心</a>
-                <div class="open-load">登录</div>
+                <div class="open-load">登录
+                    <div class="hid-userinf">
+                        <ul>
+                            <li>我的主页</li>
+                            <li>我的消息</li>
+                            <li>我的等级</li>
+                            <li>VIP会员</li>
+                            <li>个人设置</li>
+                            <li>实名认证</li>
+                            <li>退出</li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </header>
     </div>
-      <!-- 2、nav 部分开始 -->
-      <nav>
-        <div class="center">
-            <ul>
-                <li><a href="#">推荐</a></li>
-                <li><a href="#">排行榜</a></li>
-                <li><a href="#">歌单</a></li>
-                <li><a href="#">主播电台</a></li>
-                <li><a href="#">歌手</a></li>
-                <li><a href="#">新碟上架</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- 2、nav 部分结束 -->
-<div class="content w">
-    <div class="search-input">
-        <input type="text">
-        <div class="btn"></div>
-    </div>
-    <div class="search-nav">
-        <!-- 提示搜索结果 -->
-        <div class="tips">搜索“你”，找到 20 首单曲</div>
-        <!-- 搜索导航栏 -->
-        <div class="search-head">
-            <ul>
-                <li type="1">单曲</li>
-                <li type="100">歌手</li>
-                <li type="10">专辑</li>
-                <li type="1014">视频</li>
-                <li type="1006">歌词</li>
-                <li type="1000">歌单</li>
-                <li type="1009">声音主播</li>
-                <li type="1002">用户</li>
-            </ul>
-        </div>
-        <div class="search-content">
-        <!-- <ul class="search-song">
-           <li>
-            <div>
-                <span></span>
-                www</div>
-            <div>
-               <span></span><span></span><span></span><span></span><span></span>
+    <div class="content w">
+        <div class="user-head">
+            <div> <img src="imgs/singer1.jpg" alt="" class="user-picture">
             </div>
-            <div>ddd</div>
-            <div>1111</div>
-            <div>3ffff</div>
-           </li>
-        </ul>
-        <ul class="search-singer"></ul>
-        </div> -->
+            <div>
+                <div>
+                    <span class="user-name">我很优秀_NmGQ</span>
+                    <a href="javascript:;">编辑个人资料</a>
+                </div>
+                <div class="user-detail">
+                    <ul id="user-detail-ul">
+                        <li>
+                            <p>0</p>
+                            <span>动态</span>
+                        </li>
+                        <li>
+                            <p>4</p>
+                            <span>关注</span>
+                        </li>
+                        <li>
+                            <p>1</p>
+                            <span>粉丝</span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="location">所在地区：广东省 - 广州市</p>
+                <p class="used-internet">社交网络：
+                </p>
+            </div>
+        </div>
+        <div class="user-listen">
+            <p>听歌排行<span class="listen-time">累积听歌278首</span></p>
+            <div class="topsongs">
+                <ul>
+                    <li>
+                       <a href="javascript:;"></a> 
+                       <span id="songName">11</span>
+                       <i id="singerName"></i>
+                       <em id="playtimes">3次</em>
+                       <div>
+                        <span></span><span></span><span></span><span></span><span></span>
+                     </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="user-createplaylists">
+            <p><span class="user-name"></span>的歌单</p>
+            <ul class="createplaylists">
+                <li>
+                    <img src="" alt="">
+                    <a href=""></a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!-- 搜索的主要内容 -->
-</div>
-</div>
-     <!-- 4、底部部分开始 -->
-     <footer>
+    <!-- 5、底部部分开始 -->
+    <footer>
         <div class="w footer-center">
             <div class="footer-word">
                 <div class="clearfix">
@@ -187,6 +193,29 @@
             </div>
         </div>
     </footer>
-    <!-- 4、底部部分结束 -->
+    <!-- 5、底部部分结束 -->
+
+    <!-- 6、隐藏的播放设置部分开始 -->
+    <div class="play-hid">
+        <div class="w">
+            <div class="play-left"><a href="javascript:;"></a><a href="javascript:;" id="hid-play"></a><a
+                    href="javascript:;"></a></div>
+            <div class="play-middle">
+                <a href="javascript:;"><img src="imgs/play-songImg.jpg" alt=""></a>
+                <a href="javascript" class="hid-songname">How to Carry On</a>
+                <a href="javascript:;">Wildflowers/</a>
+                <a href="javascript:;">Christine Smit</a>
+                <a href="javascript:;">3</a>
+                <div class="bar">
+                    <div class="processtime"></div> <!-- 进度条 -->
+                    <span class="processcircle"></span>
+                    <i class="now-time">00:49</i><i>/</i><i class="sum-time">33:10</i>
+                </div>
+            </div>
+            <div class="play-right"></div>
+        </div>
+    </div>
+    <!-- 6、隐藏的播放设置部分结束 -->
 </body>
+
 </html>

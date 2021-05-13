@@ -113,6 +113,7 @@ window.addEventListener('load', function () {
                             clearInterval(send_timer);
                         }
                     }, 1000);
+
                 }
             });
         }

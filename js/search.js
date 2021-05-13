@@ -24,6 +24,8 @@ window.addEventListener('load', function () {
         return minute + ':' + second;
     }
 
+    
+
 
     let search_headUl = document.querySelector('.search-head').querySelector('ul');
 
@@ -94,6 +96,6 @@ window.addEventListener('load', function () {
 
     
 
-        
+
 
 })

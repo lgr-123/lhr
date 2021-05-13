@@ -1,0 +1,224 @@
+.content {
+    /* height: 600px; */
+    padding: 40px;
+    background-color: #fff;
+}
+
+.content .user-head {
+    display: flex;
+    width: 900px;
+    height: 188px;
+}
+
+.content .user-head>div:nth-child(1) {
+    margin-right: 40px;
+    width: 188px;
+    height: 188px;
+}
+
+.content .user-head>div:nth-child(1) img {
+    width: 188px;
+    height: 188px;
+}
+
+.content .user-head>div:nth-child(2) {
+    flex: 1;
+    margin-top: 2px;
+}
+
+.content .user-head>div:nth-child(2) .user-name {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}
+
+.content .user-head>div:nth-child(2) .user-name span{
+    font-size: 22px;
+}
+
+.content .user-head>div:nth-child(2) .user-name a {
+    float: right;
+    margin-top: 8px;
+    width: 110px;
+    height: 30px;
+    color: #333;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    border: 1.2px solid #ccc;
+    border-radius: 6px;
+}
+
+
+
+
+.content .user-detail {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    width: 670px;
+    height: 40px;
+    color: #666;
+}
+
+.content .user-detail ul li {
+    float: left;
+    width: 58px;
+    height: 42px;
+    text-align: center;
+    
+    font-size: 12px;
+}
+
+.content .user-detail ul li p {
+    font-size: 20px;
+}
+
+.content .user-detail ul li:nth-child(2) {
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+}
+
+.content .user-head>div:nth-child(2)>p {
+   margin-bottom: 8px;
+   color: #666;
+    font-size: 12px;
+}
+
+.content .user-listen {
+    margin-top: 40px;
+    color: #666;
+}
+
+.content .user-listen>p {
+    font-size: 20px;
+}
+
+.content .user-listen>p span {
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+/* 用户歌曲播放历史 */
+.content .user-listen .topsongs {
+    margin-top: 6px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-top: 2px solid red;
+}
+
+.content .user-listen .topsongs ul li {
+    /* overflow: hidden; */
+    padding-left: 30px;
+    width: 900px;
+    height: 38px;
+    color: #ccc;
+    line-height: 38px;
+}
+
+.content .user-listen .topsongs ul li:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.content .user-listen .topsongs ul li:hover {
+    background-color: #eeeeee;
+}
+
+.content .user-listen .topsongs ul li a {
+    display: inline-block;
+    margin-right: 12px;
+    width: 17px;
+    height: 17px;
+    line-height: 38px;
+
+    vertical-align: middle;
+    background: url(../imgs/table.png) 0 -103px no-repeat;
+}
+
+.content .user-listen .topsongs ul li span {
+    margin-right: 12px;
+    color: #333;
+}
+
+.content .user-listen .topsongs ul li em {
+    float: right;
+    width: 320px;
+    height: 38px;
+    color: #333;
+}
+
+.content .user-listen .topsongs ul li>div {
+    float: right;
+}
+
+.content .user-listen .topsongs ul li>div span {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-right: 2px;
+    vertical-align: middle;  
+}
+
+.content .user-listen .topsongs ul li>div span:nth-child(1) {
+    background: url(../imgs/icon.png) no-repeat;
+    background-position: 0 -700px;
+
+}
+
+.content .user-listen .topsongs ul li>div span:nth-child(2) {
+    background: url(../imgs/table.png) no-repeat;
+    background-position: 0 -174px;
+}
+
+.content .user-listen .topsongs ul li>div span:nth-child(3) {
+    background: url(../imgs/table.png) no-repeat;
+    background-position: 0 -195px;
+
+
+}
+
+.content .user-listen .topsongs ul li>div span:nth-child(4) {
+    background: url(../imgs/table.png) no-repeat;
+    background-position: -81px -174px;
+    margin-right: 4px;
+}
+
+.content .user-createplaylists p{
+    margin-top: 60px;
+    font-size: 20px;
+}
+
+.content .user-createplaylists .createplaylists {
+    display: flex;
+    padding-top: 20px;
+    border-top: 2px solid red;
+}
+
+.content .user-createplaylists .createplaylists li {
+    margin: 0 20px 20px 0;
+    width: 140px;
+    height: 165px;
+}
+
+.content .user-createplaylists .createplaylists li img {
+    width: 140px;
+    height: 140px;
+}
+
+.content .user-createplaylists .createplaylists li a {
+    display: inline-block;
+    margin-top: 8px;
+    width: 140px;
+    font-size: 13px;
+    color: #000;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.content .user-createplaylists .createplaylists li a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+

@@ -1,23 +1,7 @@
 window.addEventListener('load', function () {
 
 
-    // 封装函数获取地址中的参数
-    function getParam(url, param) {
-        if (url.includes('?') && url.includes(param)) {
-            let str1 = url.split(param + '=')[1];
 
-            if (str1.includes('&')) {
-                let str2 = str1.split('&');
-                return str2[0];
-            } else {
-                return str1;
-            }
-        } else {
-            return
-        }
-    }
-
-console.log(getParam(location.href, 'userId') );
 
     // open_load nav上的登录按钮
     let open_load = document.querySelector('.open-load');
@@ -27,95 +11,150 @@ console.log(getParam(location.href, 'userId') );
     let user_loadifn = document.querySelector('.user-hid');
     let user_unload = document.querySelector('.unload');
 
-    if (getParam(location.href, 'phoneId')) {
+    if (getParam(location.href, 'userId')) {
         user_unload.style.display = 'none';
-    user_loadifn.style.display = 'block';
-    originAjax({
-        url: 'https://autumnfish.cn/user/detail',
-        data: {
-            uid: getParam(location.href, 'userId')
-        },
-        success: function(obj) {
-            open_load.innerHTML = '<img src="' + obj.profile.avatarUrl + '">';
-
-            let user_detail = document.querySelector('#user-detail-ul');
-
-            user_inf.style.width = 250 + 'px';
-            user_inf.style.height = 185 + 'px';
-
-            user_personinf.querySelector('img').src = obj.profile.avatarUrl;
-            user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
-            user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
-            user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
-            user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
-            user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
-
-        }
-    })
-    } 
+        user_loadifn.style.display = 'block';
+        originAjax({
+            url: 'https://autumnfish.cn/user/detail',
+            data: {
+                uid: getParam(location.href, 'userId')
+            },
+            success: function (obj) {
+                open_load.innerHTML = '<img src="' + obj.profile.avatarUrl + '">';
 
 
+                let user_detail = document.querySelector('#user-detail-ul');
 
-    open_load.addEventListener('click', function() {
-        if (getParam(location.href, 'phoneId')) {
-alert(111);
-        } else {
+                user_inf.style.width = 250 + 'px';
+                user_inf.style.height = 185 + 'px';
+
+                user_personinf.querySelector('img').src = obj.profile.avatarUrl;
+                user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
+                user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
+                user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
+                user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
+                user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
+
+            }
+        })
+    }
+
+
+
+    open_load.addEventListener('click', function () {
+        if (!getParam(location.href, 'userId')) {
             location.href = 'phonenumberLoad.html'
+        } else {
+            location.href = 'user.html?userId=' + getParam(location.href, 'userId');
         }
     })
-    
 
 
-   
+    function getPlaylists() {
 
-    // user_inf.style.backgroundColor = '#f5f5f5';
-    // user_inf.innerHTML = '<div class="user-personinf"><img><p>哦哦哦i1803</p><span>lv.7</span>  <a href="javascript:;">签到</a> </div> <div class="user-detail"> <ul><li> <p>0</p><span>动态</span></li><li><p>4</p><span>关注</span></li><li><p>1</p><span>粉丝</span></li></ul></div>'
-   
-   
-    // originAjax({
-    //     url: 'https://autumnfish.cn/user/detail',
-    //     data: {
-    //         uid: phoneId
-    //     },
-    //     success: function (obj) {
-
-    //         load_open.innerHTML = '<img src="' + obj.profile.avatarUrl + '">';
-
-    //         let user_detail = document.querySelector('#user-detail-ul');
-
-    //         user_inf.style.width = 250 + 'px';
-    //         user_inf.style.height = 185 + 'px';
-
-    //         user_personinf.querySelector('img').src = obj.profile.avatarUrl;
-    //         user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
-    //         user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
-    //         user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
-    //         user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
-    //         user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
+    }
 
 
+    playByA = function (songId, songname, singername, songpicture) {
+        // let song_id = this.getAttribute('songid');
+        audio.setAttribute('songId', songId);
+        hid_songName.href = 'songs.html?songId=' + songId + '';
+        audio.src = 'https://music.163.com/song/media/outer/url?id=' + songId + '';
+        audio.play();
+        hid_flag = true;
+        hid_play.click();
+        hid_songName.innerHTML = songname;
+        hid_singerName.innerHTML = singername;
+        hid_songPicture.src = songpicture
+    }
+    //             hid_songName.innerHTML = str;
+
+
+    // 3、3个榜单调用接口获取歌曲 开始
+    // 飙升榜歌单获取
+    const hotSongPlaylist = document.querySelector('.hotsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 19723756
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            console.log(playlist);
+            let str = '';
+            let str1 = '';
+            let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
+            let str3 = '';
+            for (let i = 0, j = 1; i < 10; i++, j++) {
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}"songid="${playlist.tracks[i].id}"onclick="playByA(${playlist.tracks[i].id},"${playlist.tracks[i].name}",'${playlist.tracks[i].ar[0].name}','${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str += `<li>${str1 + str3}</li>`;
+
+            }
+            hotSongPlaylist.innerHTML = str + `<li class="record-liLast"><a href="#">查看全部 &gt;</a></li>`;
+        }
+
+    })
+
+    // 新歌榜榜歌单获取
+    const newSongPlaylist = document.querySelector('.newsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 3779629
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            let str = '';
+            let str1 = '';
+            let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
+            let str3 = '';
+            for (let i = 0, j = 1; i < 10; i++, j++) {
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id}, '${playlist.tracks[i].name}',' ${playlist.tracks[i].ar[0].name}', '${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str += `<li>${str1 + str3}</li>`;
+
+            }
+            newSongPlaylist.innerHTML = str + `<li class="record-liLast"><a href="#">查看全部 &gt;</a></li>`;
+        }
+
+    })
+
+
+    // 原创榜榜歌单获取
+    const originSongPlaylist = document.querySelector('.originsong-playlist-ul');
+
+    originAjax({
+        url: 'https://autumnfish.cn/top/list',
+        data: {
+            id: 2884035
+        },
+        success: function (obj) {
+            let playlist = obj.playlist;
+            let str = '';
+            let str1 = '';
+            let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
+            let str3 = '';
+            for (let i = 0, j = 1; i < 10; i++, j++) {
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id}, '${playlist.tracks[i].name}',' ${playlist.tracks[i].ar[0].name}', '${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str += `<li>${str1 + str3}</li>`;
+            }
+            originSongPlaylist.innerHTML = str + `<li class="record-liLast"><a href="#">查看全部 &gt;</a></li>`;
+
+        }
+
+    })
+
+    // 3、3个榜单调用接口获取歌曲 结束
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 1、原界面歌曲播放部分开始
-
+    // songName 获取歌曲的名字
+    let songName = document.querySelectorAll('.songname')
     //  song_play  点击该按钮可实现播放歌曲
     let song_play = document.querySelectorAll('#songPlay');
     // audio 获取音频元素
@@ -126,8 +165,7 @@ alert(111);
     let hid_flag = true;
     // hid_songName 将获取的歌名记录下来
     let hid_songName = document.querySelector('.hid-songname');
-    // songName 获取歌曲的名字
-    let songName = document.querySelectorAll('.songname')
+
     // processTime  进度条 
     let processTime = document.querySelector('.processtime');
     // barTime  获取进度条的元素
@@ -142,36 +180,33 @@ alert(111);
     let songNowTime = document.querySelector('.now-time');
     // songSumTime  将歌曲总的播放时间放在该元素上
     let songSumTime = document.querySelector('.sum-time');
-
-
-
-    // processCircle.addEventListener('click', function() {
-    //     alert(111);
-    // })
-
-
+    // hid_singerName 隐藏的播放条上的歌手名字
+    let hid_singerName = document.querySelector(".hid-singername")
+    // hid_songPicture  隐藏的播放条的歌曲封面
+    let hid_songPicture = document.querySelector('.hid-songpicture');
 
     // 实现点击播放歌曲
-    for (let i = 0; i < song_play.length; i++) {
+    // console.log(song_play.length);
+    // for (let i = 0; i < song_play.length; i++) {
 
-        song_play[i].addEventListener('click', function () {
-            if (songName[i]) {
-                let str = songName[i].innerHTML;
-                hid_songName.innerHTML = str;
-            }
-            let song_id = getSongId(this);
-            audio.setAttribute('phoneId', song_id);
-            hid_songName.href = 'songs.html?songId=' + song_id + '';
-            audio.src = 'https://music.163.com/song/media/outer/url?id=' + song_id + '';
-            audio.play();
-            hid_flag = true;
-            hid_play.click();
-        })
-        songName[i].addEventListener('click', function () {
-            this.href = 'songs.html?id=' + this.getAttribute('phoneid');
-        })
+    //     song_play[i].addEventListener('click', function () {
+    //         if (songName[i]) {
+    //             let str = songName[i].innerHTML;
+    //             hid_songName.innerHTML = str;
+    //         }
+    //         let song_id = this.getAttribute('songid');
+    //         audio.setAttribute('phoneId', song_id);
+    //         hid_songName.href = 'songs.html?songId=' + song_id + '';
+    //         audio.src = 'https://music.163.com/song/media/outer/url?id=' + song_id + '';
+    //         audio.play();
+    //         hid_flag = true;
+    //         hid_play.click();
+    //     })
+    //     songName[i].addEventListener('click', function () {
+    //         this.href = 'songs.html?songId=' + this.getAttribute('songid');
+    //     })
 
-    }
+    // }
 
     // 点击播放按钮实现播放与暂停
     hid_play.addEventListener('click', function () {
@@ -256,6 +291,24 @@ alert(111);
 
 
 
+
+
+    // 1、原界面歌曲播放部分开始
+
+
+
+    // processCircle.addEventListener('click', function() {
+    //     alert(111);
+    // })
+
+
+
+
+
+
+
+
+
     //2、 热门推荐歌单部分调用接口实现 开始
 
     const hotPlaylists = document.querySelector('.hot-song-ul');
@@ -279,68 +332,7 @@ alert(111);
     //2、 热门推荐歌单部分调用接口实现 结束
 
 
-    // 3、3个榜单调用接口获取歌曲 开始
-    // 飙升榜歌单获取
-    const hotSongPlaylist = document.querySelector('.hotsong-playlist-ul');
 
-    originAjax({
-        url: 'https://autumnfish.cn/top/list',
-        data: {
-            id: 19723756
-        },
-        success: function (obj) {
-            let playlist = obj.playlist;
-            for (let i = 0; i < 10; i++) {
-                hotSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
-                hotSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
-                hotSongPlaylist.children[i].querySelector('.songname').setAttribute('phoneId', playlist.tracks[i].id);
-            }
-        }
-
-    })
-
-    // 新歌榜榜歌单获取
-    const newSongPlaylist = document.querySelector('.newsong-playlist-ul');
-
-    originAjax({
-        url: 'https://autumnfish.cn/top/list',
-        data: {
-            id: 3779629
-        },
-        success: function (obj) {
-            let playlist = obj.playlist;
-            for (let i = 0; i < 10; i++) {
-                newSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
-                newSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
-                newSongPlaylist.children[i].querySelector('.songname').setAttribute('phoneId', playlist.tracks[i].id);
-
-            }
-        }
-
-    })
-
-
-    // 原创榜榜歌单获取
-    const originSongPlaylist = document.querySelector('.originsong-playlist-ul');
-
-    originAjax({
-        url: 'https://autumnfish.cn/top/list',
-        data: {
-            id: 2884035
-        },
-        success: function (obj) {
-            let playlist = obj.playlist;
-            for (let i = 0; i < 10; i++) {
-                originSongPlaylist.children[i].querySelector('em').querySelector('a').innerHTML = playlist.tracks[i].name;
-                originSongPlaylist.children[i].querySelector('#songPlay').setAttribute('data-songId', playlist.tracks[i].id);
-                originSongPlaylist.children[i].querySelector('.songname').setAttribute('phoneId', playlist.tracks[i].id);
-
-            }
-        }
-
-    })
-
-    // 3、3个榜单调用接口获取歌曲 结束
 
 
 
@@ -383,6 +375,7 @@ alert(111);
                             for (let i = 0; i < result.songs.length; i++) {
                                 let li = document.createElement('li');
                                 li.innerHTML = result.songs[i].name;
+                                li.setAttribute('songId', result.songs[i].id)
                                 relate_song.appendChild(li);
                             }
                         }
@@ -413,9 +406,6 @@ alert(111);
                                 relate_playlists.appendChild(li);
                             }
                         }
-
-
-
                     }
                 })
             }, 500)
@@ -424,18 +414,64 @@ alert(111);
 
         search_input.addEventListener('blur', function () {
             search_content.style.display = 'none';
-
         })
+
+        search_input.addEventListener('focus', function () {
+            if (this.value != '') {
+                search_content.style.display = 'block';
+
+            }
+        })
+        // console.log(relate_song.children.length);
+        //     for (let i = 0; i < relate_song.children.length; i++) {
+        //         relate_song.children[i].addEventListener('click', function () {
+        //             audio.src = 'https://music.163.com/song/media/outer/url?id=' + this.getAttribute('songid');
+        //             alert(11);
+        //             audio.play();
+        //         })
+        // }
     })
+
+    // 在搜索框中按下回车键跳转到搜索界面
+    search_input.addEventListener('keyup', function (e) {
+        if (e.code == 'NumpadEnter') {
+            setTimeout(function () {
+                location.href = 'search.html?keywords=' + search_input.value + '&type=1';
+
+            }, 200);
+        }
+    })
+
+    search_input.addEventListener('focus', function () {
+        console.log(relate_song.children[2]);
+        for (let i = 0; i < relate_song.children.length; i++) {
+            relate_song.children[i].addEventListener('click', function () {
+                audio.src = 'https://music.163.com/song/media/outer/url?id=' + this.getAttribute('songid');
+                alert(11);
+                audio.play();
+            })
+        }
+    })
+
+
 
     //5、 搜索功能实现 结束
 
+    // originAjax({
 
+    //     url: 'https://autumnfish.cn/playmode/intelligence/list?id=33894312&pid=24381616',
+    //     data: {
+    //         cookie: "NMTID=00OY5j6GvL3GmDo7kJ1gilJtw0cqPAAAAF5ZZP2-A; Max-Age=315360000; Expires=Sun, 11 May 2031 11:54:26 GMT; Path=/;;MUSIC_U=da179c45ec98473d26c53698f18b5ce22a5975098a565bb22cf36f98b4f4346ed106471d18c1d4a4; Max-Age=1296000; Expires=Fri, 28 May 2021 11:54:26 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Fri, 28 May 2021 11:54:26 GMT; Path=/;;__csrf=c96bd3c1ed720800e18b056a81dd3329; Max-Age=1296010; Expires=Fri, 28 May 2021 11:54:36 GMT; Path=/;"
+    //     },
+    //     success: function(obj) {
+    //         // console.log(obj);
+    //     }
+
+    // })
 
 
 
 })
-
 
 
 

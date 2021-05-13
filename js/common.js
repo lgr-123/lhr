@@ -1,4 +1,3 @@
-
 function originAjax(options) {
 
     // 设置默认值
@@ -59,8 +58,33 @@ function originAjax(options) {
             defaults.error(responseText, xhr);
         }
     }
-
-
-
 }
+
+ // 封装函数获取地址中的参数
+ function getParam(url, param) {
+    if (url.includes('?') && url.includes(param)) {
+        let str1 = url.split(param + '=')[1];
+
+        if (str1.includes('&')) {
+            let str2 = str1.split('&');
+            return str2[0];
+        } else {
+            return str1;
+        }
+    } else {
+        return
+    }
+}
+
+
+// 修改时间的格式 00:00
+function setTime(time) {
+    let minute = parseInt(time / 60);
+    minute = minute < 10 ? '0' + minute : minute;
+    let second = parseInt(time % 60);
+    second = second < 10 ? '0' + second : second;
+
+    return minute + ':' + second;
+}
+
 

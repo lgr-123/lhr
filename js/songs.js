@@ -8,17 +8,14 @@ window.addEventListener('load', function () {
     let musicPlay = document.querySelector('audio');
     // let hid_songName = document.querySelector('.hid-songname');
     // 获取歌曲id
-    console.log(location.href);
-    let num = location.href.split('=');
-    let phoneId = num[1];
-    console.log(phoneId);
+   
     // console.log(hid_songName);
-    musicPlay.src = 'https://music.163.com/song/media/outer/url?id=' + phoneId;
+    musicPlay.src = 'https://music.163.com/song/media/outer/url?id=' + getParam(location.href, 'songId');
    
         originAjax({
             url: 'https://autumnfish.cn/lyric',
             data: {
-                id: phoneId
+                id: getParam(location.href, 'songId')
             },
             success: function (obj) {
                 console.log(obj);
@@ -29,7 +26,7 @@ window.addEventListener('load', function () {
         originAjax({
             url: 'https://autumnfish.cn/song/detail',
             data: {
-                ids: phoneId
+                ids: getParam(location.href, 'songId')
             },
             success: function (obj) {
                 // console.log(obj);
@@ -168,15 +165,7 @@ window.addEventListener('load', function () {
    
 
 
-    function setTime(time) {
-        let minute = parseInt(time / 60);
-        minute = minute < 10 ? '0' + minute : minute;
-        let second = parseInt(time % 60);
-        second = second < 10 ? '0' + second : second;
-
-        return minute + ':' + second;
-    }
-
+  
 
 
 

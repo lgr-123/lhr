@@ -88,6 +88,7 @@
 
 .content .search-nav .search-content .search-song li div:nth-child(2) {
     width: 96px;
+    /* display: none; */
 }
 
 .content .search-nav .search-content .search-song li div:nth-child(3) {
