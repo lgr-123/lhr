@@ -1,7 +1,8 @@
 window.addEventListener('load', function () {
 
-
-
+    // k,historySong[] 用来存放歌曲播放的url
+    var k = 0;
+    var historySong = [];
 
     // open_load nav上的登录按钮
     let open_load = document.querySelector('.open-load');
@@ -59,7 +60,8 @@ window.addEventListener('load', function () {
         // let song_id = this.getAttribute('songid');
         audio.setAttribute('songId', songId);
         hid_songName.href = 'songs.html?songId=' + songId + '';
-        audio.src = 'https://music.163.com/song/media/outer/url?id=' + songId + '';
+        historySong[k++] = `https://music.163.com/song/media/outer/url?id=${songId}`
+        audio.src = `https://music.163.com/song/media/outer/url?id=${songId}`;
         audio.play();
         hid_flag = true;
         hid_play.click();
