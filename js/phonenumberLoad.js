@@ -18,7 +18,6 @@ window.addEventListener('load', function () {
     let user_close = document.querySelectorAll('.load-close');
     let send_phoneId = document.querySelector('.send-phoneId');
     let reSend = document.querySelector(".resend");
-
     // for (let i = 0; i < user_close.length; i++) {
     //     user_close[i].addEventListener('click', function() {
     //         this.parentNode.parentNode.style.display = 'none';
@@ -73,6 +72,8 @@ window.addEventListener('load', function () {
                         load_main.style.display = 'none';
                         send_checknum.style.display = 'block';
                         user_submit.setAttribute('phoneId', obj.account.id);
+                        user_submit.setAttribute('cookie', obj.cookie);
+
                         //    obj.account.id.slice(1,3);
                         // console.log(typeof obj.account.id);
                         let str = user_phone.value;
@@ -203,7 +204,7 @@ window.addEventListener('load', function () {
                 },
                 success: function (obj) {
                     console.log(obj);
-                    location.href = 'index.html?userId=' +  user_submit.getAttribute('phoneId');
+                    location.href = `index.html?userId=${user_submit.getAttribute('phoneId')}&cookie=${user_submit.getAttribute('cookie')}`;
 
                 }
             })

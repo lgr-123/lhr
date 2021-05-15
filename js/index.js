@@ -1,7 +1,8 @@
 window.addEventListener('load', function () {
 
-    // k,historySong[] 用来存放歌曲播放的url
+    // k,historySong[] 用来存放歌曲播放的id
     var k = 0;
+    var m = 0;
     var historySong = [];
 
     // open_load nav上的登录按钮
@@ -11,63 +12,143 @@ window.addEventListener('load', function () {
     // let user_personinf = document.querySelector('.user-personinf');
     let user_loadifn = document.querySelector('.user-hid');
     let user_unload = document.querySelector('.unload');
+    let hid_content = document.getElementById('hid-content');
 
     if (getParam(location.href, 'userId')) {
         user_unload.style.display = 'none';
         user_loadifn.style.display = 'block';
-        originAjax({
-            url: 'https://autumnfish.cn/user/detail',
-            data: {
-                uid: getParam(location.href, 'userId')
-            },
-            success: function (obj) {
-                open_load.innerHTML = '<img src="' + obj.profile.avatarUrl + '">';
+        let promise = new Promise((resolve, reject) => {
+            originAjax({
+                url: 'https://autumnfish.cn/user/detail',
+                data: {
+                    uid: getParam(location.href, 'userId')
+                },
+                success: function (obj) {
+                    open_load.innerHTML = `<img src="${obj.profile.avatarUrl}">${hid_content.innerHTML}`;
 
 
-                let user_detail = document.querySelector('#user-detail-ul');
+                    let user_detail = document.querySelector('#user-detail-ul');
 
-                user_inf.style.width = 250 + 'px';
-                user_inf.style.height = 185 + 'px';
+                    user_inf.style.width = 250 + 'px';
+                    user_inf.style.height = 185 + 'px';
 
-                user_personinf.querySelector('img').src = obj.profile.avatarUrl;
-                user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
-                user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
-                user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
-                user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
-                user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
+                    user_personinf.querySelector('img').src = obj.profile.avatarUrl;
+                    user_personinf.querySelector('p').innerHTML = obj.profile.nickname;
+                    user_personinf.querySelector('span').innerHTML = 'lv.' + obj.level;
+                    user_detail.children[0].querySelector('p').innerHTML = obj.profile.eventCount;
+                    user_detail.children[1].querySelector('p').innerHTML = obj.profile.follows;
+                    user_detail.children[2].querySelector('p').innerHTML = obj.profile.followeds;
+                    resolve();
+                }
 
-            }
+            })
         })
+
+        promise.then(() => {
+            // hid_userInf 当用户登录后才会显示的一些设置
+            let hid_userInf = document.querySelector('.hid-userinf');
+            // userInf 用户主页
+            let userInf = document.querySelector('.userinf');
+            // quitLoad 用户退出登录
+            let quitLoad = document.querySelector('.quitload');
+            // userSet 用户个人设置
+            let userSet = document.querySelector('.userset');
+
+            // 鼠标经过时显示用户设置
+            open_load.addEventListener('mouseover', function () {
+                hid_userInf.style.display = 'block';
+            })
+
+            // 鼠标不经过时隐藏用户设置
+            open_load.addEventListener('mouseout', function () {
+                hid_userInf.style.display = 'none';
+            })
+
+            // 点击个人主页跳转到用户页面
+            userInf.addEventListener('click', function () {
+                location.href = 'user.html?userId=' + getParam(location.href, 'userId');
+            })
+
+            // 点击退出登录
+            quitLoad.addEventListener('click', function() {
+                originAjax({
+                    url: 'https://autumnfish.cn/logout',
+                    data: {
+                        cookie: getParam(location.href, 'cookie')
+                    },
+                    success: function(obj) {
+                        location.href = 'index.html';
+                    }
+                })
+            })
+
+            userSet.addEventListener('click', function() {
+                location.href = `userset.html?userId=${getParam(location.href, 'userId')}&cookie=${getParam(location.href, 'cookie')}`;
+            })
+
+
+        })
+
+
+
+      
+
+
     }
-
-
-
     open_load.addEventListener('click', function () {
         if (!getParam(location.href, 'userId')) {
             location.href = 'phonenumberLoad.html'
-        } else {
-            location.href = 'user.html?userId=' + getParam(location.href, 'userId');
         }
     })
 
 
-    function getPlaylists() {
-
-    }
 
 
-    playByA = function (songId, songname, singername, songpicture) {
-        // let song_id = this.getAttribute('songid');
+
+
+
+
+
+
+
+
+
+
+    playByA = function (songId) {
         audio.setAttribute('songId', songId);
         hid_songName.href = 'songs.html?songId=' + songId + '';
-        historySong[k++] = `https://music.163.com/song/media/outer/url?id=${songId}`
-        audio.src = `https://music.163.com/song/media/outer/url?id=${songId}`;
-        audio.play();
-        hid_flag = true;
-        hid_play.click();
-        hid_songName.innerHTML = songname;
-        hid_singerName.innerHTML = singername;
-        hid_songPicture.src = songpicture
+        m = k;
+        historySong[k++] = songId;
+        clearTimeout(play_timer);
+        play_timer = setTimeout(function () {
+            audio.src = `https://music.163.com/song/media/outer/url?id=${songId}`;
+            audio.play();
+
+            originAjax({
+                url: 'https://autumnfish.cn/song/detail',
+                data: {
+                    ids: songId
+                },
+                success: function (obj) {
+                    console.log(obj);
+                    let song = obj.songs;
+                    let str = song[0].ar[0].name;
+                    hid_songName.innerHTML = song[0].name;
+                    hid_songPicture.src = song[0].al.picUrl;
+                    if (song[0].ar.length > 1) {
+                        str = '';
+                        for (let i = 0; i < song[0].ar.length; i++) {
+                            str += `/${song[0].ar[i].name}`
+                        }
+                    }
+                    hid_singerName.innerHTML = str
+                    hid_flag = true;
+                    hid_play.click();
+                }
+
+            })
+        }, 600);
+
     }
     //             hid_songName.innerHTML = str;
 
@@ -83,14 +164,14 @@ window.addEventListener('load', function () {
         },
         success: function (obj) {
             let playlist = obj.playlist;
-            console.log(playlist);
+            // console.log(playlist);
             let str = '';
             let str1 = '';
             let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
             let str3 = '';
             for (let i = 0, j = 1; i < 10; i++, j++) {
-                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
-                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}"songid="${playlist.tracks[i].id}"onclick="playByA(${playlist.tracks[i].id},"${playlist.tracks[i].name}",'${playlist.tracks[i].ar[0].name}','${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id})"</a>${str2}</div>`;
                 str += `<li>${str1 + str3}</li>`;
 
             }
@@ -114,8 +195,8 @@ window.addEventListener('load', function () {
             let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
             let str3 = '';
             for (let i = 0, j = 1; i < 10; i++, j++) {
-                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
-                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id}, '${playlist.tracks[i].name}',' ${playlist.tracks[i].ar[0].name}', '${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id})"</a>${str2}</div>`;
                 str += `<li>${str1 + str3}</li>`;
 
             }
@@ -140,8 +221,8 @@ window.addEventListener('load', function () {
             let str2 = '<a href="javascript:;"></a><a href="javascript:;"></a>';
             let str3 = '';
             for (let i = 0, j = 1; i < 10; i++, j++) {
-                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}" singername="${playlist.tracks[i].ar[0].name}">${playlist.tracks[i].name}</a></em>`
-                str3 = `<div><a heref="javascript:;" id="songPlay" singername="${playlist.tracks[i].ar[0].name}" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id}, '${playlist.tracks[i].name}',' ${playlist.tracks[i].ar[0].name}', '${playlist.tracks[i].al.picUrl}')"</a>${str2}</div>`;
+                str1 = `<span>${j}</span><em><a href="songs.html?songId=${playlist.tracks[i].id}" class="songname" songid="${playlist.tracks[i].id}">${playlist.tracks[i].name}</a></em>`
+                str3 = `<div><a heref="javascript:;" id="songPlay" songid="${playlist.tracks[i].id}" onclick="playByA(${playlist.tracks[i].id})"</a>${str2}</div>`;
                 str += `<li>${str1 + str3}</li>`;
             }
             originSongPlaylist.innerHTML = str + `<li class="record-liLast"><a href="#">查看全部 &gt;</a></li>`;
@@ -167,7 +248,6 @@ window.addEventListener('load', function () {
     let hid_flag = true;
     // hid_songName 将获取的歌名记录下来
     let hid_songName = document.querySelector('.hid-songname');
-
     // processTime  进度条 
     let processTime = document.querySelector('.processtime');
     // barTime  获取进度条的元素
@@ -186,29 +266,13 @@ window.addEventListener('load', function () {
     let hid_singerName = document.querySelector(".hid-singername")
     // hid_songPicture  隐藏的播放条的歌曲封面
     let hid_songPicture = document.querySelector('.hid-songpicture');
+    // volumeCircle  音量条上的小点
+    let volumeCircle = document.querySelector('.circlevolume');
+    // sumVolume总的音量条长度
+    let sumVolume = document.querySelector('.sumvolume');
+    // realVolume总的音量条长度
+    let realVolume = document.querySelector('.realvolume');
 
-    // 实现点击播放歌曲
-    // console.log(song_play.length);
-    // for (let i = 0; i < song_play.length; i++) {
-
-    //     song_play[i].addEventListener('click', function () {
-    //         if (songName[i]) {
-    //             let str = songName[i].innerHTML;
-    //             hid_songName.innerHTML = str;
-    //         }
-    //         let song_id = this.getAttribute('songid');
-    //         audio.setAttribute('phoneId', song_id);
-    //         hid_songName.href = 'songs.html?songId=' + song_id + '';
-    //         audio.src = 'https://music.163.com/song/media/outer/url?id=' + song_id + '';
-    //         audio.play();
-    //         hid_flag = true;
-    //         hid_play.click();
-    //     })
-    //     songName[i].addEventListener('click', function () {
-    //         this.href = 'songs.html?songId=' + this.getAttribute('songid');
-    //     })
-
-    // }
 
     // 点击播放按钮实现播放与暂停
     hid_play.addEventListener('click', function () {
@@ -256,17 +320,34 @@ window.addEventListener('load', function () {
 
 
 
+    let musicSet = this.document.querySelector('.play-hid');
+    console.log(musicSet.offsetTop);
+    // 调整歌曲音量
+    volumeCircle.addEventListener('mousedown', function () {
 
+        document.addEventListener('mousemove', move);
+        function move(e) {
+            if (e.clientY - musicSet.offsetTop >= sumVolume.offsetTop && e.clientY - musicSet.offsetTopt > 15) {
+                volumeCircle.style.top = e.clientY - musicSet.offsetTop + 'px';
+                realVolume.style.height = -e.clientY + musicSet.offsetTop + 'px';
+                console.log(volumeCircle.offsetTop);
+            }
 
+            // if (e.clientY - musicSet.offsetTop < sumVolume.offsetTop || realVolume.offsetHeight <= 0) {
+            //     return 
+            //     document.removeEventListener('mousemove', move);
 
-    // 手动获取歌曲Id 并进行兼容性处理
-    function getSongId(obj) {
-        if (obj.dataset.songid) {  // 此方法自定义属性必须 写成小写的形式  html中不用
-            return obj.dataset.songid
-        } else {
-            return obj.getAttribute("data-songId");
+            // }
         }
-    }
+        document.addEventListener('mouseup', function () {
+            document.removeEventListener('mousemove', move);
+            document.removeEventListener('mousedown', move);
+            // audio.play();  // 进度条拖动结束时再播放歌曲
+        })
+    })
+
+
+
 
     // 根据歌曲播放时间获取进度条的位置
     function progressTime() {
@@ -278,7 +359,8 @@ window.addEventListener('load', function () {
         processCircle.style.left = processTimeWidth - 5 + 'px';
         //     console.log(song_currentTime);
         // console.log(song_totalTime);
-        songNowTime.innerHTML = audio.currentTime;
+        songNowTime.innerHTML = setTime(audio.currentTime);
+        songSumTime.innerHTML = setTime(audio.duration);
     }
 
     // 根据进度条位置设置播放时间
@@ -288,8 +370,123 @@ window.addEventListener('load', function () {
         audio.currentTime = processTimeWidth * song_totalTime / barTimeWidth;
     }
 
-    // 1、原界面歌曲播放部分结束
+    // 切换上一首歌播放
+    let play_left = document.querySelector('#play-left');
+    let play_right = document.querySelector('#play-right');
+    // 加定时器，防止点击过多时连续调用接口 
 
+    play_left.addEventListener('click', function () {
+        if (m == 0) {
+            m = k;
+        }
+        m--;
+        clearTimeout(play_timer);
+        play_timer = setTimeout(function () {
+            let promise = new Promise((resolve, reject) => {
+                originAjax({
+                    url: 'https://autumnfish.cn/check/music',
+                    data: {
+                        id: historySong[m]
+                    },
+                    success: function (obj) {
+                        resolve(obj);
+                        console.log(obj);
+                    }
+                })
+
+            })
+            promise.then((obj) => {
+                console.log(obj.success);
+                if (obj.success) {
+                    audio.src = `https://music.163.com/song/media/outer/url?id=${historySong[m]}`;
+                    audio.play();
+                    originAjax({
+                        url: 'https://autumnfish.cn/song/detail',
+                        data: {
+                            ids: historySong[m]
+                        },
+                        success: function (obj) {
+                            // console.log(obj);
+                            let song = obj.songs;
+                            let str = song[0].ar[0].name;
+                            hid_songName.innerHTML = song[0].name;
+                            hid_songPicture.src = song[0].al.picUrl;
+                            if (song[0].ar.length > 1) {
+                                str = '';
+                                for (let i = 0; i < song[0].ar.length; i++) {
+                                    str += `/${song[0].ar[i].name}`
+                                }
+                            }
+                            hid_singerName.innerHTML = str;
+                            hid_flag = true;
+                            hid_play.click();
+                        }
+
+                    })
+                } else {
+                    alert('该歌曲不能播放，已为你播放下一首');
+                    hid_flag = true;
+                    hid_play.click();
+                    play_right.click();
+
+                }
+
+
+            })
+
+
+        }, 800)
+
+    })
+
+    play_right.addEventListener('click', function () {
+        if (m == k - 1) {
+            m = -1;
+        }
+        m++;
+        clearTimeout(play_timer);
+        play_timer = setTimeout(function () {
+            audio.src = `https://music.163.com/song/media/outer/url?id=${historySong[m]}`;
+            // console.log(audio.networkState);
+            //    console.log(audio);
+            originAjax({
+                url: 'https://autumnfish.cn/song/detail',
+                data: {
+                    ids: historySong[m]
+                },
+                success: function (obj) {
+                    // console.log(obj);
+                    let song = obj.songs;
+                    let str = song[0].ar[0].name;
+                    hid_songName.innerHTML = song[0].name;
+                    hid_songPicture.src = song[0].al.picUrl;
+                    if (song[0].ar.length > 1) {
+                        str = '';
+                        for (let i = 0; i < song[0].ar.length; i++) {
+                            str += `/${song[0].ar[i].name}`
+                        }
+                    }
+                    hid_singerName.innerHTML = str;
+                    hid_flag = true;
+                    hid_play.click();
+                }
+
+            })
+
+
+        }, 800)
+
+
+    })
+
+    audio.addEventListener('ended', function () {
+        hid_flag = true;
+        hid_play.click();
+        play_right.click();
+    })
+
+
+    // 1、原界面歌曲播放部分结束
 
 
 
@@ -308,6 +505,18 @@ window.addEventListener('load', function () {
 
 
 
+    audio.addEventListener('ended', function () {
+        hid_flag = true;
+        hid_play.click();
+        play_right.click();
+    })
+
+
+    // 1、原界面歌曲播放部分结束
+
+
+
+
 
 
 
@@ -321,15 +530,42 @@ window.addEventListener('load', function () {
             limit: 8,
         },
         success: function (obj) {
+            console.log(obj);
             let playlists = obj.result;
+            // console.log(playlists);
             for (let i = 0; i < 8; i++) {
-                hotPlaylists.children[i].setAttribute('playlistId', playlists[i].id)
+                hotPlaylists.children[i].querySelector('.float').querySelector('a').setAttribute('playlistId', playlists[i].id)
                 hotPlaylists.children[i].querySelector('img').src = playlists[i].picUrl;
                 hotPlaylists.children[i].querySelector('p').querySelector('a').innerHTML = playlists[i].name;
             }
         }
 
     })
+
+    for (let i = 0; i < hotPlaylists.children.length; i++) {
+        hotPlaylists.children[i].querySelector('.float').querySelector('a').addEventListener('click', function () {
+            let playlist = hotPlaylists.children[i].querySelector('.float').querySelector('a').getAttribute('playlistId');
+            originAjax({
+                url: 'https://autumnfish.cn/playlist/detail',
+                data: {
+                    id: playlist
+                },
+                success: function (obj) {
+                    // console.log(obj);
+                    let songs = obj.playlist.trackIds;
+                    // console.log(songs);
+                    k = m = 0;
+                    for (let j = 0; j < songs.length; j++) {
+                        historySong[k++] = songs[j].id;
+                    }
+                    hid_flag = true;
+                    hid_play.click();
+                    play_right.click();
+                }
+            })
+        })
+
+    }
 
     //2、 热门推荐歌单部分调用接口实现 结束
 
@@ -472,14 +708,11 @@ window.addEventListener('load', function () {
     // })
 
 
-
 })
 
 
 
-
-
-
+// https://music.163.com/song/media/outer/url?id=1466033420
 
 
 

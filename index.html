@@ -77,17 +77,20 @@
                 </div>
                 <a href="#">创作者中心</a>
                 <div class="open-load">登录
-                        <!-- <div class="hid-userinf">
+                    <script type="text/x-template" id="hid-content">
+                        <div class="hid-userinf">
                             <ul>
-                                <li>我的主页</li>
+                                <li class="userinf">我的主页</li>
                                 <li>我的消息</li>
                                 <li>我的等级</li>
                                 <li>VIP会员</li>
-                                <li>个人设置</li>
+                                <li class="userset">个人设置</li>
                                 <li>实名认证</li>
-                                <li>退出</li>
+                                <li class="quitload">退出</li>
                             </ul>
-                        </div>  -->
+                        </div> 
+                    </script>
+                       
                 </div>
 
             </div>
@@ -657,8 +660,8 @@
     <!-- 6、隐藏的播放设置部分开始 -->
     <div class="play-hid">
         <div class="w">
-            <div class="play-left"><a href="javascript:;"></a><a href="javascript:;" id="hid-play"></a><a
-                    href="javascript:;"></a></div>
+            <div class="play-left"><a href="javascript:;" id="play-left"></a><a href="javascript:;" id="hid-play"></a><a
+                    href="javascript:;" id="play-right"></a></div>
             <div class="play-middle">
                 <a href="javascript:;"><img alt="" class="hid-songpicture"></a>
                 <a href="javascript" class="hid-songname"></a>
@@ -666,11 +669,22 @@
                 <div class="bar">
                     <div class="processtime"></div> <!-- 进度条 -->
                     <span class="processcircle"></span>
-                    <i class="now-time">00:49</i><i>/</i><i class="sum-time">33:10</i>
+                    <i class="now-time"></i><i>/</i><i class="sum-time"></i>
                 </div>
             </div>
-            <div class="play-right"></div>
+            <div class="play-right">
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>  
+                <div class="sumvolume"></div>
+                <div class="realvolume"></div>
+                <div class="circlevolume"></div>
+            </div>
         </div>
+        <i class="switch1"></i>
+        <i class="switch2"></i>
     </div>
     <!-- 6、隐藏的播放设置部分结束 -->
 

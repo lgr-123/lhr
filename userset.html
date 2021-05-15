@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人设置</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/userset.css">
+    <script src="js/common.js"></script>
+    <script src="js/userset.js"></script>
+</head>
+
+<body>
+    <!-- 1、 头部制作部分开始 -->
+    <div class="head">
+        <header>
+            <a href="#"></a>
+            <ul>
+                <li><a href="#">发现音乐</a></li>
+                <li><a href="#">我的音乐</a></li>
+                <li><a href="#">朋友</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">音乐人</a></li>
+                <li>
+                    <a href="#">下载客户端</a>
+                    <span></span>
+                </li>
+            </ul>
+            <div>
+                <div class="search">
+                    <i></i>
+                    <input type="text" placeholder="音乐/视频/电台/用户" id="search-input">
+                    <div class="search-hid">
+                        <div class="relate-user">搜'<span id="relate-user"></span>'相关用户 &gt;</div>
+                        <div class="relate-song">
+                            <span>
+                                <i></i>
+                                单曲</span>
+                            <ul id="relate-song">
+                            </ul>
+                        </div>
+                        <div class="relate-singer">
+                            <span>
+                                <i></i>
+                                歌手</span>
+                            <ul id="relate-singer">
+                            </ul>
+                        </div>
+                        <div class="relate-ablum">
+                            <span>
+                                <i></i>
+                                专辑</span>
+                            <ul id="relate-ablum">
+                            </ul>
+                        </div>
+                        <div class="relate-playlists">
+                            <span>
+                                <i></i>
+                                歌单</span>
+                            <ul id="relate-playlists">
+                            </ul>
+                        </div>
+                    </div>
+                    <span></span>
+                </div>
+                <a href="#">创作者中心</a>
+                <div class="open-load">登录
+                    <script type="text/x-template" id="hid-content">
+                        <div class="hid-userinf">
+                            <ul>
+                                <li class="userinf">我的主页</li>
+                                <li>我的消息</li>
+                                <li>我的等级</li>
+                                <li>VIP会员</li>
+                                <li class="userset">个人设置</li>
+                                <li>实名认证</li>
+                                <li class="quitload">退出</li>
+                            </ul>
+                        </div> 
+                    </script>
+
+                </div>
+
+            </div>
+        </header>
+
+    </div>
+    <!-- <iframe src="phonenumberLoad.html" frameborder="0" scrolling="no" id="loadByPhone" name="wee"></iframe> -->
+
+    <!-- 1、 头部制作部分结束 -->
+
+    <!-- 2、nav 部分开始 -->
+    <nav>
+        <div class="center">
+            <ul>
+                <li><a href="#">推荐</a></li>
+                <li><a href="#">排行榜</a></li>
+                <li><a href="#">歌单</a></li>
+                <li><a href="#">主播电台</a></li>
+                <li><a href="#">歌手</a></li>
+                <li><a href="#">新碟上架</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- 2、nav 部分结束 -->
+    <div class="set-content w">
+        <div class="set-head">个人设置</div>
+        <ul class="set-ul">
+            <li>基本设置</li>
+            <li>绑定设置</li>
+            <li>隐私设置</li>
+        </ul>
+        <div class="base-set">
+            <script type="text/x-template" id="base-set">
+                <div class="from">
+                    昵称： <input type="text" id="set-name">
+                    介绍： <textarea id="set-signature"></textarea>
+                    <!-- 设置相同的name属性可以实现单选的效果 -->
+                    性别： <input type="radio" value="男" id="gender" name="1"> 男
+                     <input type="radio" value="女" id="gender" name="1"> 女
+                     <input type="radio" value="保密" id="gender" name="1"> 保密 <br>
+                    生日： <input type="month"> <br>
+                    地区： 
+                    <div class="save">保存</div>
+                    </div> 
+                <div class="pic">
+                    <img src="" alt="">
+                    <div class="pic-change">更换头像</div>
+                </div>
+            </script>
+            <!-- <script type="text/x-template" id="bind-set">
+                
+            </script> -->
+            <div class> 您现在的手机为：<span></span></div>
+
+           
+
+        </div>
+    </div>
+
+
+
+    <!-- 5、底部部分开始 -->
+    <footer>
+        <div class="w footer-center">
+            <div class="footer-word">
+                <div class="clearfix">
+                    <ul>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <span>网易公司版权所有©1997-2021&nbsp; &nbsp; 杭州乐读科技有限公司运营:</span>
+                    <a href="#"> 浙网文[2021] 1186-054号</a>
+                </div>
+                <div>
+                    <span>违法和不良信息举报电话：0571-89853516 &nbsp; &nbsp; 举报邮箱: &nbsp; </span>
+                    <a href="#">ncm5990@163.com</a>
+                </div>
+                <div>
+                    <a href="#">粤B2-20090191-18 工业和信息化部备案管理系统网站 </a>
+                    <i></i>
+                    <a href="#"> 浙公网安备 33010902002564号</a>
+                </div>
+            </div>
+            <div class="footer-icon">
+                <ul>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- 5、底部部分结束 -->
+
+</body>
+
+</html>

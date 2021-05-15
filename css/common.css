@@ -115,8 +115,8 @@ header>div .search input {
     font-size: 12px;
 }
 
-
 /* 隐藏的搜索信息 */
+
 header>div .search .search-hid {
     display: none;
     position: absolute;
@@ -145,13 +145,10 @@ header>div .search .search-hid .relate-song {
     /* height: 110px; */
 }
 
-header>div .search .search-hid .relate-song span,
-header>div .search .search-hid .relate-singer span,
-header>div .search .search-hid .relate-ablum span,
-header>div .search .search-hid .relate-playlists span {
+header>div .search .search-hid .relate-song span, header>div .search .search-hid .relate-singer span, header>div .search .search-hid .relate-ablum span, header>div .search .search-hid .relate-playlists span {
     padding: 8px 0 0 10px;
     width: 54px;
-    line-height:normal;
+    line-height: normal;
 }
 
 header>div .search .search-hid .relate-song span i {
@@ -171,13 +168,13 @@ header>div .search .search-hid .relate-song ul li {
     height: 28px;
     line-height: 28px;
     padding: 5px 0 5px 8px;
-      /* 以下三行代码实现文本溢出是显示省略号的效果 */
-      overflow: hidden;
-      white-space:nowrap;
-      text-overflow: ellipsis;
+    /* 以下三行代码实现文本溢出是显示省略号的效果 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-header>div .search .search-hid  ul li:hover {
+header>div .search .search-hid ul li:hover {
     background-color: #ccc;
     cursor: pointer;
 }
@@ -202,14 +199,13 @@ header>div .search .search-hid .relate-singer ul {
     background-color: #f9f8f8;
 }
 
-
 header>div .search .search-hid .relate-ablum {
     display: flex;
     width: 100%;
     /* height: 60px; */
 }
 
-header>div .search .search-hid .relate-ablum i{
+header>div .search .search-hid .relate-ablum i {
     display: inline-block;
     width: 14px;
     height: 15px;
@@ -221,17 +217,15 @@ header>div .search .search-hid .relate-ablum ul {
     border: 1px solid #ccc;
 }
 
-header>div .search .search-hid .relate-ablum ul li,
-header>div .search .search-hid .relate-playlists ul li,
-header>div .search .search-hid .relate-singer ul li{
+header>div .search .search-hid .relate-ablum ul li, header>div .search .search-hid .relate-playlists ul li, header>div .search .search-hid .relate-singer ul li {
     width: 182px;
     height: 28px;
     padding: 5px 0 5px 8px;
     line-height: 28px;
-      /* 以下三行代码实现文本溢出是显示省略号的效果 */
-      overflow: hidden;
-      white-space:nowrap;
-      text-overflow: ellipsis;
+    /* 以下三行代码实现文本溢出是显示省略号的效果 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 header>div .search .search-hid .relate-playlists {
@@ -252,12 +246,6 @@ header>div .search .search-hid .relate-playlists ul {
     border: 1px solid #ccc;
     background-color: #f9f8f8;
 }
-
-
-
-
-
-
 
 header>div a:nth-child(2) {
     margin: 19px 10px 0 10px;
@@ -320,7 +308,6 @@ header>div .open-load .hid-userinf ul li:hover {
     background-color: #353535;
     cursor: pointer;
 }
-
 
 /* 头部制作部分结束 */
 
@@ -521,12 +508,11 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     height: 50px;
     color: #9b9b9b;
     transition: all .5s;
-    background-color: #303030;
+    background-color: rgba(41, 41, 41, .8);
 }
 
 .play-hid>div {
     height: 100%;
-    background-color: pink;
 }
 
 .play-hid>div>div {
@@ -537,7 +523,6 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     width: 137px;
     height: 100%;
     line-height: 50px;
-    background-color: green;
 }
 
 .play-hid>div .play-left a {
@@ -615,7 +600,7 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     width: 493px;
     height: 9px;
     border-radius: 8px;
-    background-color: #535353;
+    background-color: rgba(41, 41, 41, .3);
 }
 
 .play-hid>div .play-middle .bar:hover {
@@ -669,6 +654,100 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
 .play-hid>div .play-middle .bar i:nth-child(4) {
     right: -50px;
     color: #797979;
+}
+
+.play-hid>div .play-right {
+    position: relative;
+    float: right;
+    padding-top: 11px;
+    width: 186px;
+    height: 100%;
+    background-color: yellow;
+}
+
+.play-hid>div .play-right a {
+    float: left;
+    margin-right: 4px;
+    width: 25px;
+    height: 25px;
+    background: url(../imgs/playbar.png);
+}
+
+.play-hid>div .play-right a:nth-child(1) {
+    background-position: -88px -163px;
+}
+
+.play-hid>div .play-right a:nth-child(2) {
+    background-position: -114px -163px;
+}
+
+.play-hid>div .play-right a:nth-child(3) {
+    background-position: 2px -248px;
+}
+
+.play-hid>div .play-right a:nth-child(4) {
+    background-position: -66px -248px;
+}
+
+.play-hid>div .play-right a:nth-child(5) {
+    width: 60px;
+    background-position: -42px -68px;
+}
+
+/* 音量控制条 */
+.play-hid>div .play-right .sumvolume,
+.play-hid>div .play-right .realvolume,
+.play-hid>div .play-right .circlevolume {
+    position: absolute;
+   
+}
+
+.play-hid>div .play-right .sumvolume {
+    top: -112px;
+    right: 96px;
+    width: 32px;
+    height: 113px;
+    background-color: rgba(41, 41, 41, .8);
+}
+
+.play-hid>div .play-right .realvolume {
+    bottom: 49px;
+    right: 109px;
+    width: 4px;
+    height: 113px;
+    border-radius: 2px;
+    background-color: red; 
+}
+
+.play-hid>div .play-right .circlevolume {
+    top: -113px;
+    right: 103px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    background-color: red;
+}
+
+
+/* switch: 控制隐藏或显示 */
+
+.play-hid .switch1 {
+    position: absolute;
+    top: -20px;
+    right: 65px;
+    width: 52px;
+    height: 67px;
+    background: url(../imgs/playbar.png) no-repeat 0 -380px;
+}
+
+.play-hid .switch2 {
+    position: absolute;
+    top: -15px;
+    right: 80px;
+    width: 20px;
+    height: 20px;
+    background: url(../imgs/playbar.png) no-repeat -100px -380px;
 }
 
 /* 隐藏的播放设置部分结束 */
