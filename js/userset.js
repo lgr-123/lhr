@@ -20,13 +20,11 @@ window.addEventListener('load', function () {
                 },
                 success: function (obj) {
                     // console.log(obj);
-
-
-
                     resolve(obj);
                 }
             })
         })
+
         promise1.then((obj) => {
             console.log(obj);
             let setName = document.querySelector('#set-name');
@@ -74,6 +72,7 @@ window.addEventListener('load', function () {
             save.addEventListener('click', function() {
                 // 没有修改时，直接跳转到主页面
                 if (sex == obj.profile.gender && !flag) {
+                    alert('没有修改任何信息！')
                     location.href = `index.html?userId=${getParam(location.href,'userId')}&cookie=${getParam(location.href,'cookie')}`;
                 }
                 originAjax ({
