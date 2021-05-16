@@ -500,18 +500,23 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
 /* 底部部分结束 */
 
 /* 隐藏的播放设置部分开始 */
+/* body {
+    min-width: 1536px !important; 
+} */
 
 .play-hid {
     position: fixed;
-    bottom: 0;
+    bottom: -62px;
     width: 100%;
     height: 50px;
+    min-width: 1536px;
     color: #9b9b9b;
     transition: all .5s;
     background-color: rgba(41, 41, 41, .8);
 }
 
 .play-hid>div {
+    min-width: 980px;
     height: 100%;
 }
 
@@ -662,7 +667,6 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     padding-top: 11px;
     width: 186px;
     height: 100%;
-    background-color: yellow;
 }
 
 .play-hid>div .play-right a {
@@ -694,41 +698,6 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     background-position: -42px -68px;
 }
 
-/* 音量控制条 */
-.play-hid>div .play-right .sumvolume,
-.play-hid>div .play-right .realvolume,
-.play-hid>div .play-right .circlevolume {
-    position: absolute;
-   
-}
-
-.play-hid>div .play-right .sumvolume {
-    top: -112px;
-    right: 96px;
-    width: 32px;
-    height: 113px;
-    background-color: rgba(41, 41, 41, .8);
-}
-
-.play-hid>div .play-right .realvolume {
-    bottom: 49px;
-    right: 109px;
-    width: 4px;
-    height: 113px;
-    border-radius: 2px;
-    background-color: red; 
-}
-
-.play-hid>div .play-right .circlevolume {
-    top: -113px;
-    right: 103px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    background-color: red;
-}
-
 
 /* switch: 控制隐藏或显示 */
 
@@ -747,7 +716,8 @@ footer .footer-center .footer-icon ul li:nth-child(n+2) span {
     right: 80px;
     width: 20px;
     height: 20px;
-    background: url(../imgs/playbar.png) no-repeat -100px -380px;
+    /* -80px -380px; */
+    background: url(../imgs/playbar.png) no-repeat -80px -380px;
 }
 
 /* 隐藏的播放设置部分结束 */

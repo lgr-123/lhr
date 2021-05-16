@@ -301,12 +301,6 @@ window.addEventListener('load', function () {
     let songNowTime = document.querySelector('.now-time');
     // songSumTime  将歌曲总的播放时间放在该元素上
     let songSumTime = document.querySelector('.sum-time');
-    // volumeCircle  音量条上的小点
-    let volumeCircle = document.querySelector('.circlevolume');
-    // sumVolume总的音量条长度
-    let sumVolume = document.querySelector('.sumvolume');
-    // realVolume总的音量条长度
-    let realVolume = document.querySelector('.realvolume');
 
 
     // 点击播放器播放按钮实现播放与暂停
@@ -397,34 +391,6 @@ window.addEventListener('load', function () {
         let song_totalTime = audio.duration;
         audio.currentTime = processTimeWidth * song_totalTime / barTimeWidth;
     }
-
-
-
-    let musicSet = this.document.querySelector('.play-hid');
-    console.log(musicSet.offsetTop);
-    // 调整歌曲音量
-    volumeCircle.addEventListener('mousedown', function () {
-
-        document.addEventListener('mousemove', move);
-        function move(e) {
-            if (e.clientY - musicSet.offsetTop >= sumVolume.offsetTop && e.clientY - musicSet.offsetTopt > 15) {
-                volumeCircle.style.top = e.clientY - musicSet.offsetTop + 'px';
-                realVolume.style.height = -e.clientY + musicSet.offsetTop + 'px';
-                console.log(volumeCircle.offsetTop);
-            }
-
-            // if (e.clientY - musicSet.offsetTop < sumVolume.offsetTop || realVolume.offsetHeight <= 0) {
-            //     return 
-            //     document.removeEventListener('mousemove', move);
-
-            // }
-        }
-        document.addEventListener('mouseup', function () {
-            document.removeEventListener('mousemove', move);
-            document.removeEventListener('mousedown', move);
-            // audio.play();  // 进度条拖动结束时再播放歌曲
-        })
-    })
 
 
     // 以下代码实现切换歌曲
@@ -560,6 +526,41 @@ window.addEventListener('load', function () {
         play_right.click();
     })
 
+    // 单鼠标移动到浏览器可视窗口最下面时，播放器显示，否则隐藏
+    let hid_Playcontent = document.querySelector('.play-hid');
+    document.addEventListener('mousemove', function(e) {
+        // console.log(window.innerHeight);
+        // console.log(e.clientY);
+        // console.log(hid_Playcontent.offsetHeight);  50
+        // console.log(e.clientY -  hid_Playcontent.offsetHeight);
+        
+        // 如果此时为可隐藏状态时
+        if ( !isOn) { 
+            // 判断距离
+        if (e.clientY +  hid_Playcontent.offsetHeight +10 >= window.innerHeight) {
+            hid_Playcontent.style.bottom = 0 ;
+            // console.log(e.clientY);
+        } else {
+            hid_Playcontent.style.bottom = -hid_Playcontent.offsetHeight - 12 + 'px';
+        }
+    }
+    })
+    let play_switch = document.querySelector('.switch2');
+    // isOn 全局变量，判断播放器是否显示和隐藏
+    var isOn = false;
+    // 点击开关按钮
+    play_switch.addEventListener('click', function() {
+        if (isOn) {
+            isOn = false;
+            // 打开状态
+            this.style.background = `url(imgs/playbar.png) no-repeat   -80px -380px `;
+        } else {
+            // 关闭状态
+            this.style.background = `url(imgs/playbar.png) no-repeat   -100px -380px`;
+            isOn = true;
+        }
+    })
+
 
     // 歌曲播放器部分结束
 
@@ -630,44 +631,62 @@ window.addEventListener('load', function () {
 
     // search_input nav上面的搜索框
     let search_input = document.getElementById('search-input');
+    // search_content 点击上述搜索框会显示搜索内容
     let search_content = document.querySelector('.search-hid');
+    // relate_song 搜索相关的歌曲
     let relate_song = document.getElementById('relate-song');
+    // relate_singer 搜搜相关的歌手
     let relate_singer = document.getElementById('relate-singer');
+    // relate_album 相关的专辑
     let relate_album = document.getElementById('relate-ablum');
+    // relate_playlists 相关的歌单
     let relate_playlists = document.getElementById('relate-playlists');
+    // relate_user 相关的用户
     let relate_user = document.getElementById('relate-user');
     let search_timer = null;
 
+    // 当用户点击搜索框输入内容时触发的时间
     search_input.addEventListener('input', function () {
+        // key获取用户输入的关键词
         let key = this.value;
+        // 需要开启定时器，防止用户再输入的过程中频繁调用接口，开启后只会在用户输入结束后才调用
         clearTimeout(search_timer);
         // key.trim()去掉用户输入内容两边的空格
         if (key.trim().length == 0) {
+            // 即用户没有输入任何内容， 隐藏存放搜索内容的盒子
             search_content.style.display = 'none';
         } else {
+            // 显示
             search_content.style.display = 'block';
+            // 搜索相关用户
             relate_user.innerHTML = key;
+            // 定时器
             search_timer = setTimeout(function () {
                 originAjax({
                     type: 'get',
                     url: 'https://autumnfish.cn/search/suggest',
                     data: {
+                        // key 输入的关键词
                         keywords: key
                     },
                     success: function (obj) {
-
                         let result = obj.result;
                         console.log(result);
-                        relate_song.innerHTML = '';  // 先清除之前的内容
+                        // 先清除之前搜索的内容
+                        relate_song.innerHTML = '';
+                        // 当关键词搜索到有相关歌曲时
                         if (result.songs) {
+                            // result.songs.length 搜索到的歌曲的数量
                             for (let i = 0; i < result.songs.length; i++) {
                                 let li = document.createElement('li');
                                 li.innerHTML = result.songs[i].name;
+                                // 将歌曲id存放在li中
                                 li.setAttribute('songId', result.songs[i].id)
                                 relate_song.appendChild(li);
                             }
                         }
 
+                        // 下述代码实现原理跟上述一样
                         relate_singer.innerHTML = '';
                         if (result.artists) {
                             for (let i = 0; i < result.artists.length; i++) {
@@ -700,69 +719,57 @@ window.addEventListener('load', function () {
 
         }
 
+        // 当搜索框失去焦点时，隐藏搜索内容
         search_input.addEventListener('blur', function () {
-            search_content.style.display = 'none';
+            // 定时器作用： 防止用户想要点击歌曲等进行播放时由于隐藏了不能点击
+            setTimeout(function () {
+                search_content.style.display = 'none';
+            }, 600);
         })
 
+        // 当搜索框获得焦点时，如关键词存在，则显示搜素内容
         search_input.addEventListener('focus', function () {
             if (this.value != '') {
                 search_content.style.display = 'block';
 
             }
         })
-        // console.log(relate_song.children.length);
-        //     for (let i = 0; i < relate_song.children.length; i++) {
-        //         relate_song.children[i].addEventListener('click', function () {
-        //             audio.src = 'https://music.163.com/song/media/outer/url?id=' + this.getAttribute('songid');
-        //             alert(11);
-        //             audio.play();
-        //         })
-        // }
     })
 
     // 在搜索框中按下回车键跳转到搜索界面
     search_input.addEventListener('keyup', function (e) {
-        if (e.code == 'NumpadEnter') {
-            setTimeout(function () {
-                location.href = 'search.html?keywords=' + search_input.value + '&type=1';
-
-            }, 200);
+        // 先判断搜索框是否有内容，避免用户输入空格回车后跳转
+        if (this.value.trim() != '') {
+            // 判断按键是不是回车
+            if (e.code == 'NumpadEnter') {
+                setTimeout(function () {
+                    //带上关键词 跳转到搜索页面
+                    location.href = 'search.html?keywords=' + search_input.value + '&type=1';
+                }, 200);
+            }
         }
     })
 
-    search_input.addEventListener('focus', function () {
-        console.log(relate_song.children[2]);
-        for (let i = 0; i < relate_song.children.length; i++) {
-            relate_song.children[i].addEventListener('click', function () {
-                audio.src = 'https://music.163.com/song/media/outer/url?id=' + this.getAttribute('songid');
-                alert(11);
-                audio.play();
-            })
+    // 通过事件委托，实现点击搜索到的歌曲点击能播放
+    search_content.addEventListener('click', function (e) {
+        // console.log(e.target);
+        let songId = e.target.getAttribute('songid');
+        // 传入songid，调用函数实现播放功能
+        // 判断用户点击的是搜索到的歌曲才能播放
+        if (songId) {
+            historySong[k++] = songId;
+            playByA(songId);
+
         }
     })
 
-
-
-    //5、 搜索功能实现 结束
-
-    // originAjax({
-
-    //     url: 'https://autumnfish.cn/playmode/intelligence/list?id=33894312&pid=24381616',
-    //     data: {
-    //         cookie: "NMTID=00OY5j6GvL3GmDo7kJ1gilJtw0cqPAAAAF5ZZP2-A; Max-Age=315360000; Expires=Sun, 11 May 2031 11:54:26 GMT; Path=/;;MUSIC_U=da179c45ec98473d26c53698f18b5ce22a5975098a565bb22cf36f98b4f4346ed106471d18c1d4a4; Max-Age=1296000; Expires=Fri, 28 May 2021 11:54:26 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Fri, 28 May 2021 11:54:26 GMT; Path=/;;__csrf=c96bd3c1ed720800e18b056a81dd3329; Max-Age=1296010; Expires=Fri, 28 May 2021 11:54:36 GMT; Path=/;"
-    //     },
-    //     success: function(obj) {
-    //         // console.log(obj);
-    //     }
-
-    // })
+    // 搜索功能实现 结束
 
 
 })
 
 
 
-// https://music.163.com/song/media/outer/url?id=1466033420
 
 
 
