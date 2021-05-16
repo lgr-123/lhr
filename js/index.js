@@ -628,7 +628,7 @@ window.addEventListener('load', function () {
 
     //5、 nav上搜索框实现 搜索功能实现 开始
 
-
+    // search_input nav上面的搜索框
     let search_input = document.getElementById('search-input');
     let search_content = document.querySelector('.search-hid');
     let relate_song = document.getElementById('relate-song');
