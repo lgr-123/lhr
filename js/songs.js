@@ -1,3 +1,6 @@
+
+
+
 window.addEventListener('load', function () {
 
 
@@ -16,8 +19,8 @@ window.addEventListener('load', function () {
 
     // 将url上的歌曲id解析下来赋值给音频的src
     musicPlay.src = 'https://music.163.com/song/media/outer/url?id=' + getParam(location.href, 'songId');
-    //    播放歌曲
-    musicPlay.play();
+
+
 
     // 调用接口获取歌词
     originAjax({
@@ -27,6 +30,7 @@ window.addEventListener('load', function () {
         },
         success: function (obj) {
             console.log(obj);
+            // 调用函数，传入歌词数据
             getLyric(obj.lrc.lyric);
         }
     })
@@ -49,19 +53,18 @@ window.addEventListener('load', function () {
 
 
     let songStr = '';
-
+    // 通过该函数获取到歌词，通过分割的方法获取到歌词
     function getLyric(obj) {
         // console.log(obj);
         let str = obj.split('\n');
         // console.log(str);
         str.forEach(element => {
-
             let h = element.split(']');
             // console.log(h);
             songLyric = h[1];
             let g = h[0].split('[');
             //    console.log(g[1]);
-            // 判断歌词是否存在，存在时才进行分割
+            // 判断歌词是否存在，存在时才进行时间的分割
             if (g[1]) {
                 let q = g[1].split('.');
                 // console.log(q[0]);
@@ -70,7 +73,7 @@ window.addEventListener('load', function () {
                 //   let t = n[0] * 60 + parseInt(n[1]) + parseInt(q[1]/100)/10;
                 let t = n[0] * 60 + parseInt(n[1]);
                 // console.log(t);
-
+                // 将下面歌词去掉
                 if (songLyric == 'OP: Denseline Co,Limited(Warner/Chappell Music H.K.Ltd).'
                     || songLyric == 'SP: Warner/Chappell Music Publishing Agency(Beijing)Ltd.'
                     || songLyric == 'OP: HIM Music Publishing Inc.(Admin By,EMI MPT)'
@@ -80,44 +83,36 @@ window.addEventListener('load', function () {
                 }
 
                 if (songLyric) {
-                    // songStr += '<p id="time' + t + '">' + songLyric + '<p>';
-                    songStr += '<p id="time' + t + '">' + songLyric + '<p>';
+                    // 拼接歌词
+                    songStr += `<p id="time${t}">${songLyric}<p>`;
                 }
             }
-
-
-
-
-
-
-            // console.log(t);
-            // console.log(q[1]);
-            // console.log(n);
-            // console.log(h);
-            // console.log(songLyric);
-
-
         });
         song_lyric.innerHTML = songStr;
     }
 
 
     // 播放歌曲功能
-
+    // btnPlay 播放歌曲按钮
     let btnPlay = document.querySelector('#btnPlay');
+    // isPlay 判断是否播放
     let isPlay = true;
+    // totalTime 获取存放总时间的元素
     let totalTime = document.querySelector('.total-time');
+    // nowTime 获取存放实时播放时间的元素
     let nowTime = document.querySelector('.now-time');
-
+    // 点击播放或暂停
     btnPlay.addEventListener('click', function () {
         if (isPlay) {
             musicPlay.play();
+            // 改变按钮形状
             let style = document.createElement('style');
             let text = document.createTextNode(`.content .music-icon .music-set .music-play a:nth-child(2)::before{content: "\\ea1d" }`);
             style.appendChild(text);
             document.body.appendChild(style);
             isPlay = false;
             console.log(musicPlay.duration);
+            // 存放总时间
             totalTime.innerHTML = setTime(musicPlay.duration);
         } else {
             musicPlay.pause();
@@ -130,45 +125,30 @@ window.addEventListener('load', function () {
 
     })
 
+
     // 歌词同步功能
     let flag = 0;
+    // lyric_div 存放歌词的div
     let lyric_div = document.querySelector('.lyric');
 
-    console.log(lyric_div);
     lyric_div.scrollTop = 50;
     console.log(lyric_div.scrollTop);
 
     setInterval(function () {
         musicPlay.addEventListener('timeupdate', function () {
             nowTime.innerHTML = setTime(this.currentTime);
-            // let curTime = parseInt(this.currentTime * 10);
-            // curTime /= 10;
             let curTime = parseInt(this.currentTime);
             // console.log(curTime);
             // console.log(this.currentTime);
-
             if (document.querySelector('#time' + curTime)) {
-
                 document.querySelector('#time' + flag).style.color = '#ccc';
                 flag = curTime;
                 document.querySelector('#time' + curTime).style.color = 'red';
                 if (document.querySelector('#time' + curTime).offsetTop >= lyric_div.offsetHeight / 2) {
-
                     // console.log(document.querySelector('#time' + curTime).offsetHeight);
                     lyric_div.scrollTop = document.querySelector('#time' + curTime).offsetTop - 2 / 5 * lyric_div.offsetHeight;
-
                 }
             }
-
-            // if (document.querySelector('#time' + curTime).offsetTop) {
-            //     if (document.querySelector('#time' + curTime).offsetTop >= lyric_div.offsetHeight / 2) {
-
-            //         // console.log(document.querySelector('#time' + curTime).offsetHeight);
-            //         lyric_div.scrollTop = document.querySelector('#time' + curTime).offsetTop - 2/5 * lyric_div.offsetHeight;
-
-            //     }
-            // }
-
         }, false)
     }, 1000)
 
