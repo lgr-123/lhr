@@ -32,10 +32,7 @@ banner.then((obj) => {
             let timer = null;
         
         // console.log(banners);
-        banner_picture.src = banners[0].imageUrl;
-        banner_bg.style.background = 'url('+ banners[0].imageUrl +') no-repeat center center';
-        banner_bg.style.backgroundSize = '100%';
-           
+        banner_picture.src = banners[0].imageUrl;           
         for (let i = 0; i < banners.length; i++) {
                 let li = document.createElement('li');
                 li.setAttribute('index', i + 1);  // 记录小圆圈的索引号
@@ -47,9 +44,6 @@ banner.then((obj) => {
                     this.className = 'current';
                     num = this.getAttribute('index');
                     banner_picture.src = banners[i].imageUrl
-                    banner_bg.style.background = 'url('+ banners[i].imageUrl +') no-repeat center center';
-        banner_bg.style.backgroundSize = '100%';
-        // banner_bg.style.backgroundSize = '6000px';
                 })
             }
            
@@ -61,8 +55,6 @@ banner.then((obj) => {
                     num = banners.length - 1 ;
                 }
                 banner_picture.src = banners[num].imageUrl;
-                banner_bg.style.background = 'url('+ banners[num].imageUrl +') no-repeat center center';
-                banner_bg.style.backgroundSize = '6000px';
                 for (let j = 0; j < banners.length; j++) {
                     ol.children[j].className = '';
                 }
@@ -76,9 +68,6 @@ banner.then((obj) => {
                     num = 0;
                 }
                 banner_picture.src = banners[num].imageUrl;
-                banner_bg.style.background = 'url('+ banners[num].imageUrl +') no-repeat';
-        banner_bg.style.backgroundSize = '100%';
-        // banner_bg.style.backgroundSize = '6000px';
                 for (let j = 0; j < banners.length; j++) {
                     ol.children[j].className = '';
                 }
