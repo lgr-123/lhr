@@ -5,16 +5,15 @@ function animate(obj, target, callback) {
     // console.log(111);
     obj.timer = setInterval(function () {
     //   console.log(11);
-    var j = 0;
-    j++;
-    if (j ==1) {
-    // console.log(target);
-    // console.log(obj.offsetLeft);
-    }
         var step = (target - obj.offsetLeft) / 5.0;    // 修改步长值，
         step = step > 0 ? Math.ceil(step) : Math.floor(step);   // 步长值改为整数，不要出现小数问题
+        // console.log(obj.offsetLeft);
+        // console.log(target);
         
+        // obj.style.left = obj.offsetLeft + target + 'px';
+
         if (obj.offsetLeft == target) {
+            // console.log(11);
             clearInterval(obj.timer);
             // if(callback) {
             //     callback();  // 有回调函数时执行回调函数
@@ -25,6 +24,9 @@ function animate(obj, target, callback) {
     }, 50);
 
 }
+
+
+
 
 
 // 沿着y轴移动

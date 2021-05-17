@@ -211,7 +211,7 @@ window.addEventListener('load', function () {
     const newSongPlaylist = document.querySelector('.newsong-playlist-ul');
 
     newSongPlaylist.addEventListener('click', function (e) {
-        console.log(e.target);
+        // console.log(e.target);
         let songId = e.target.getAttribute('songid');
         playByA(songId);
     })
@@ -493,6 +493,7 @@ window.addEventListener('load', function () {
                         // console.log(obj);
                         let song = obj.songs;
                         let str = song[0].ar[0].name;
+                        hid_songName.href = `songs.html?songId=${ historySong[m]}`
                         hid_songName.innerHTML = song[0].name;
                         hid_songPicture.src = song[0].al.picUrl;
                         if (song[0].ar.length > 1) {
